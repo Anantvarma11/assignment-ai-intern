@@ -74,19 +74,27 @@ export async function POST(request: Request) {
         person: savedPerson,
         citations,
         source: rawData.source,
+        isCachedSnapshot: rawData.isCachedSnapshot,
+        cachedAt: rawData.cachedAt,
+        urlHash: rawData.urlHash,
         actorRunId: rawData.actorRunId,
         simulationsCount,
       },
-      message: `Profile for ${savedPerson.name} ingested via ${rawData.source === "apify_live" ? "Apify Live Actor" : "High-Fidelity Snapshot Cache"}, passed Critic validation, and completed ${simulationsCount} initial speed dates.`,
+      message: rawData.isCachedSnapshot
+        ? `Loaded from verified snapshot cache (${rawData.cachedAt}). Critic pass validated citations.`
+        : `Live scraped via Apify Actor ${rawData.actorRunId ? `(Run ${rawData.actorRunId})` : ""}. Critic pass validated citations.`,
     });
   } catch (err: any) {
     console.error("Ingest pipeline failed:", err);
+    const statusCode = err.statusCode || 500;
     return NextResponse.json(
       {
         success: false,
         error: err.message || "An unexpected error occurred during profile ingestion.",
+        code: err.code || "INGEST_ERROR",
+        details: err.details,
       },
-      { status: 500 }
+      { status: statusCode }
     );
   }
 }

@@ -1,5 +1,22 @@
+import crypto from "crypto";
+import fs from "fs";
+import path from "path";
 import { IngestedRawData, RawLinkedInProfile, RawInstagramProfile } from "./types";
-import { getSnapshotForUrl, SNAPSHOT_CACHE } from "./cache";
+import { getSnapshotForUrl } from "./cache";
+
+export class ProfileScrapeError extends Error {
+  public code: string;
+  public statusCode: number;
+  public details?: any;
+
+  constructor(message: string, code: string = "SCRAPE_FAILED", statusCode: number = 422, details?: any) {
+    super(message);
+    this.name = "ProfileScrapeError";
+    this.code = code;
+    this.statusCode = statusCode;
+    this.details = details;
+  }
+}
 
 export interface ApifyScrapeOptions {
   token?: string;
@@ -8,8 +25,37 @@ export interface ApifyScrapeOptions {
 }
 
 /**
- * Executes or resolves LinkedIn and Instagram profile ingestion via Apify,
- * falling back to high-fidelity snapshot cache when offline or token is absent.
+ * Computes a stable hex hash from the input URLs.
+ */
+export function computeUrlHash(linkedInUrl: string, instagramUrl: string): string {
+  const norm = `${linkedInUrl.trim().toLowerCase()}|${instagramUrl.trim().toLowerCase()}`;
+  return crypto.createHash("sha256").update(norm).digest("hex").slice(0, 16);
+}
+
+/**
+ * Saves a raw snapshot to disk under data/snapshots/<hash>.json.
+ */
+function saveSnapshotToDisk(urlHash: string, data: any): string {
+  try {
+    const dir = path.join(process.cwd(), "data", "snapshots");
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    const filePath = path.join(dir, `${urlHash}.json`);
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
+    return filePath;
+  } catch (err) {
+    console.warn("Failed to persist snapshot to disk:", err);
+    return "";
+  }
+}
+
+/**
+ * Executes LinkedIn and Instagram profile ingestion via Apify Actor,
+ * falling back cleanly to the verified snapshot cache when token is absent or rate-limited.
+ * 
+ * CRITICAL RULE: If a URL cannot be fetched and has no snapshot cache entry,
+ * it returns a strict error. NO SILENT FABRICATION OF FAKE DATA.
  */
 export async function scrapeProfilesWithApify(
   linkedInUrl: string,
@@ -17,12 +63,13 @@ export async function scrapeProfilesWithApify(
   options: ApifyScrapeOptions = {}
 ): Promise<IngestedRawData> {
   const token = options.token || process.env.APIFY_TOKEN || process.env.APIFY_API_KEY || "";
-  const actorId = options.actorId || "FcwQfZYY4FHN6baby"; // User's Apify actor from console screenshot
+  const actorId = options.actorId || "FcwQfZYY4FHN6baby";
+  const urlHash = computeUrlHash(linkedInUrl, instagramUrl);
 
-  // 1. Try Live Apify Actor Run if token is available
+  // 1. Try Live Apify Actor Run if valid token is provided
   if (token && token.trim().length > 5) {
     try {
-      console.log(`[Apify Scraper] Initiating run on Actor ${actorId} with token...`);
+      console.log(`[Apify Scraper] Running Actor ${actorId} for ${linkedInUrl} and ${instagramUrl}...`);
 
       const runRes = await fetch(`https://api.apify.com/v2/acts/${actorId}/runs?token=${token}`, {
         method: "POST",
@@ -40,8 +87,8 @@ export async function scrapeProfilesWithApify(
         const defaultDatasetId = runData?.data?.defaultDatasetId;
 
         if (defaultDatasetId) {
-          // Poll briefly or fetch items
-          await new Promise((r) => setTimeout(r, 2500));
+          // Poll briefly for results
+          await new Promise((r) => setTimeout(r, 3000));
           const itemsRes = await fetch(
             `https://api.apify.com/v2/datasets/${defaultDatasetId}/items?token=${token}`
           );
@@ -49,99 +96,78 @@ export async function scrapeProfilesWithApify(
             const items = await itemsRes.json();
             if (Array.isArray(items) && items.length > 0) {
               const item = items[0];
+              const parsedLi = item.linkedIn || parseRawLinkedIn(linkedInUrl, item);
+              const parsedIg = item.instagram || parseRawInstagram(instagramUrl, item);
+
+              const snapshotPath = saveSnapshotToDisk(urlHash, {
+                urlHash,
+                scrapedAt: new Date().toISOString(),
+                source: "apify_live",
+                actorId,
+                actorRunId: runId,
+                linkedIn: parsedLi,
+                instagram: parsedIg,
+              });
+
               return {
-                linkedIn: item.linkedIn || parseRawLinkedIn(linkedInUrl, item),
-                instagram: item.instagram || parseRawInstagram(instagramUrl, item),
+                linkedIn: parsedLi,
+                instagram: parsedIg,
                 source: "apify_live",
                 actorRunId: runId,
+                urlHash,
+                isCachedSnapshot: false,
+                snapshotPath,
               };
             }
           }
         }
+      } else {
+        const errorBody = await runRes.text();
+        console.warn(`[Apify Scraper] Live actor run HTTP ${runRes.status}:`, errorBody);
       }
     } catch (err) {
-      console.warn("[Apify Scraper] Live actor run error, gracefully utilizing snapshot cache:", err);
+      console.warn("[Apify Scraper] Live actor execution error:", err);
     }
   }
 
-  // 2. Snapshot Cache Fallback
+  // 2. Check Snapshot Cache
   const cached = getSnapshotForUrl(linkedInUrl, instagramUrl);
   if (cached) {
-    return {
-      ...cached,
+    const cachedAt = cached.linkedIn.scrapedAt || "2026-10-11T08:00:00Z";
+    const snapshotPath = saveSnapshotToDisk(urlHash, {
+      urlHash,
+      scrapedAt: cachedAt,
       source: "snapshot_cache",
+      linkedIn: cached.linkedIn,
+      instagram: cached.instagram,
+    });
+
+    return {
+      linkedIn: cached.linkedIn,
+      instagram: cached.instagram,
+      source: "snapshot_cache",
+      urlHash,
+      isCachedSnapshot: true,
+      cachedAt,
+      snapshotPath,
     };
   }
 
-  // 3. Dynamic Synthetic Scraping Scaffold for Arbitrary URLs (if not in pre-baked cache)
-  const liHandle = linkedInUrl.split("/in/")[1]?.replace(/\/$/, "") || "professional";
-  const igHandle = instagramUrl.split("instagram.com/")[1]?.replace(/\/$/, "") || "creator";
-  const formattedName = liHandle
-    .split("-")
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(" ");
-
-  const dynamicData: IngestedRawData = {
-    linkedIn: {
-      url: linkedInUrl,
-      fullName: formattedName,
-      headline: `Builder & Innovator | ${formattedName}`,
-      location: "San Francisco Bay Area",
-      company: "Autonomous Engineering Lab",
-      role: "Lead Systems Architect",
-      about: `Dedicated to engineering scalable software systems, machine learning models, and human-computer interfaces. Active contributor to open source communities.`,
-      avatarUrl: `https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80`,
-      experiences: [
-        {
-          title: "Principal Engineer",
-          company: "Autonomous Engineering Lab",
-          description: "Architecting real-time intelligence platforms and high-throughput systems.",
-          startDate: "2022-01-01",
-        },
-        {
-          title: "Senior Research Technologist",
-          company: "Frontier Open Labs",
-          description: "Spearheaded research into distributed data structures and AI agent interfaces.",
-          startDate: "2019-01-01",
-          endDate: "2022-01-01",
-        },
-      ],
-      skills: ["Distributed Systems", "Machine Learning", "System Architecture", "Open Source"],
-      scrapedAt: new Date().toISOString(),
-    },
-    instagram: {
-      url: instagramUrl,
-      username: igHandle,
-      fullName: formattedName,
-      biography: `Exploring ideas, coffee, and physical movement. Systems builder.`,
-      profilePicUrl: `https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80`,
-      followersCount: 12500,
-      recentPosts: [
-        {
-          id: "ig:post:1",
-          caption: "Morning espresso dial-in. 18g in, 36g out in 28 seconds. Getting the extraction notes right is pure chemistry.",
-          hashtags: ["#specialtycoffee", "#espresso", "#morningroutine"],
-          likesCount: 420,
-        },
-        {
-          id: "ig:post:2",
-          caption: "Bouldering session at the gym. Sent my first V7 project after two weeks of working the crux.",
-          hashtags: ["#bouldering", "#climbing", "#movement"],
-          likesCount: 680,
-        },
-        {
-          id: "ig:post:3",
-          caption: "Weekend trail run through the redwoods. Nothing clears the head quite like silence in the trees.",
-          hashtags: ["#trailrunning", "#nature", "#california"],
-          likesCount: 512,
-        },
-      ],
-      scrapedAt: new Date().toISOString(),
-    },
-    source: "snapshot_cache",
-  };
-
-  return dynamicData;
+  // 3. STRICT INTEGRITY RULE: No silent synthetic data generation!
+  // If no token was provided (or live scrape failed) AND no snapshot exists, fail honestly.
+  throw new ProfileScrapeError(
+    `Live scraping failed: Unable to extract public profile data from LinkedIn (${linkedInUrl}) and Instagram (${instagramUrl}). ` +
+      `The profiles may be private, require authentication, or LinkedIn/Instagram anti-bot defense blocked the connection. ` +
+      `No pre-existing verified snapshot exists for these URLs in the repository cache.`,
+    "SCRAPE_UNAVAILABLE",
+    422,
+    {
+      linkedInUrl,
+      instagramUrl,
+      requiresApifyToken: !token,
+      suggestion: "Provide an active Apify API token or test with one of the verified participant presets.",
+    }
+  );
 }
 
 function parseRawLinkedIn(url: string, raw: any): RawLinkedInProfile {

@@ -3,6 +3,7 @@ import path from "path";
 import { Person, AgentAnalysis, DatingSimulation, CompatibilityMatch } from "@/lib/types";
 import { SEED_PEOPLE } from "@/lib/data/seed-people";
 import { PRECOMPUTED_SIMULATIONS } from "@/lib/data/seed-simulations";
+import { loadConsentingVolunteers } from "@/lib/data/volunteers";
 
 export interface DatabaseState {
   people: Record<string, Person>;
@@ -46,9 +47,10 @@ class StorageEngine {
       console.warn("StorageEngine: Could not read local database file, using in-memory state:", err);
     }
 
-    // Seed people if empty or missing seed profiles
+    // Seed people strictly from consenting volunteers in data/volunteers.csv
     let needsSave = false;
-    for (const seed of SEED_PEOPLE) {
+    const { people: volunteerPeople, message: volunteerMsg } = loadConsentingVolunteers();
+    for (const seed of volunteerPeople) {
       if (!this.state.people[seed.id]) {
         this.state.people[seed.id] = seed;
         needsSave = true;

@@ -118,7 +118,11 @@ export default function IngestPage() {
         throw new Error(json.error || "Ingestion pipeline returned an error.");
       }
 
-      addLog(`Profile data ingested via source: ${json.data.source.toUpperCase()}`);
+      if (json.data.isCachedSnapshot) {
+        addLog(`⚠️ CACHED SNAPSHOT LOADED: Profile retrieved from verified snapshot (${json.data.cachedAt || "2026-10-11"}). Not a live scrape.`);
+      } else {
+        addLog(`✅ LIVE APIFY SCRAPE: Ingested live via Actor run ${json.data.actorRunId || "Active"}.`);
+      }
       setCurrentStep(2);
       await new Promise((r) => setTimeout(r, 700));
 

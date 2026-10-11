@@ -6,54 +6,88 @@ Pairwise AI transforms verified professional and personal profiles into autonomo
 
 ---
 
-## Key Features
+## 🏛️ Architecture Overview
 
-1. **25 Real People Supported**
-   - Curated dataset of 26 real prominent technologists, researchers, and creators (e.g. Satya Nadella, Jensen Huang, Dr. Fei-Fei Li, Demis Hassabis, Mira Murati, Sam Altman, Yann LeCun, Andrej Karpathy, Simone Giertz, Melanie Perkins).
-   - Each profile contains official LinkedIn and public Instagram URLs, verified provenance audit trails, confidence scores, and missing-information indicators.
-   - Strict adherence to public evidence: no sensitive attribute inference, no invented romantic claims.
+```mermaid
+graph TD
+    subgraph Ingestion ["1. Real Ingestion & Snapshot Cache"]
+        A["LinkedIn URL + Public Instagram URL"] --> B["Ingestion Engine (/api/ingest)"]
+        B -->|Live Network| C["Apify Actor (FcwQfZYY4FHN6baby) / Instaloader"]
+        B -->|Offline / Rate-Limit Fallback| D["Snapshot Store (data/snapshots/&lt;urlHash&gt;.json)"]
+        C -->|SHA-256 Hash + ScrapedAt| E["Raw Ingested Data"]
+        D -->|SHA-256 Hash + ScrapedAt| E
+        B -->|Un-scraped & Uncached| F["HTTP 422 ProfileScrapeError (No Silent Fake Data)"]
+    end
 
-2. **Provider Abstraction Architecture**
-   - **Cerebras (Preferred)**: Cloud inference via `llama-3.3-70b` with structured output parsing, explicit timeouts, and bounded retries.
-   - **OpenRouter (Secondary)**: Fallback LLM gateway supporting open models.
-   - **Deterministic Fallback Engine (Guaranteed)**: Offline-safe heuristic engine that analyzes real profile signals, orchestrates grounded multi-turn dates, and scores compatibility without requiring live API keys.
-   - **Provider Diagnostics**: Live status badge in the UI displaying active provider, model name, and fallback status. Zero fabricated model claims.
+    subgraph Verification ["2. Evidence Bundling & Critic Pass"]
+        E --> G["Evidence Bundle (Stable IDs: li:about, li:exp:N, ig:bio, ig:post:N)"]
+        G --> H["Critic Agent (LLM / Corpus Evaluator)"]
+        H -->|Ungrounded Claims Filtered| I["Verified Person Card + Rejected Claims Log"]
+    end
 
-3. **Isolated Agent Runtime**
-   - Shared runtime instantiating a unique persona for each individual.
-   - Untrusted Data Isolation: treats counterparty statements as conversational text rather than instructions, preventing prompt injection.
-   - Models distinct cognitive styles, conversational tone, and dating priority matrices (must-haves, dealbreakers, flexibilities).
+    subgraph Intelligence ["3. Profile Analyst & Twin Agent"]
+        I --> J["Analyst Agent (LLM Structured JSON)"]
+        J -->|Needs, Hobbies, Dealbreakers + Negative Guardrails| K["Twin Persona Agent"]
+        K -->|Untrusted Data Isolation| L["Private Context & Inner Thoughts"]
+    end
 
-4. **Genuine Dating Simulations**
-   - Orchestrates multi-turn dates (4–8 alternating turns) at curated settings (*The Conservatory at Blue Bottle*, *SFMOMA Sculpture Terrace*, *The Battery Library Lounge*).
-   - Records turn-by-turn dialogue, emotional vibe signals, and internal agent reflections.
-   - Computes multi-dimensional evaluations: Chemistry, Intellectual alignment, Humor alignment, Vibe match, Conversational flow, Standout moments, and Potential friction points.
-   - Cached in persistence layer to avoid redundant inference calls.
+    subgraph DatingEngine ["4. Two-Tier Dating Engine & Grounding Audit"]
+        L --> M["Tier 1: Speed Dates (All Pairs, 4-6 Turns, Fast Concurrent Model)"]
+        M --> N["Tier 2: Deep Second Dates (Top 5 Pairs, 10+ Turns, Curated Venue)"]
+        N --> O["Post-Date Scorecards (Agent A & Agent B Independent Ratings)"]
+        N --> P["Grounding Judge Audit (Hallucination Detection & Grounding Score)"]
+    end
 
-5. **Explainable Hybrid Matching & Rankings**
-   - Directional compatibility computed separately for Person A → Person B and Person B → Person A.
-   - Mutual compatibility synthesized using a balanced harmonic mean with missing-data penalties.
-   - Measurable deterministic signals: Shared interests (25%), Shared hobbies (15%), Lifestyle & ambition alignment (20%), Preference fulfillment (20%), Simulation interaction (20%).
-   - Grounded evidence citations for every score and ethical disclaimers.
-
-6. **Refined Editorial Dark Interface**
-   - High-contrast obsidian dark palette (`#090B0E`) with warm gold accents (`#D4AF37`, `#F3E5AB`).
-   - Nine complete, fully interactive screens: Dashboard, People Directory, Add-Person Workflow, Individual Profile, Agent Analysis, Dating Simulation Theater, Simulation Transcripts Archive, Personalized Rankings, and Match Detail & Evidence.
-
----
-
-## Tech Stack
-
-- **Framework**: Next.js 16 (App Router)
-- **Language**: TypeScript (Strict Mode)
-- **UI & Styling**: React 19, Tailwind CSS v4, Lucide Icons
-- **Validation**: Zod
-- **Persistence**: High-performance local JSON / in-memory storage engine (`data/pairwise-db.json`) compatible with serverless runtimes
-- **Testing**: Vitest (10 test suites, 35 unit & integration tests)
+    subgraph RankingEngine ["5. Ranking & Heatmap Matrix"]
+        O & P --> Q["Z-Score Normalization (Cohort Mean & Std Dev)"]
+        Q --> R["Asymmetric Blending (60% Simulation Weight)"]
+        R --> S["Per-Person Ranking Page & All-Pairs Heatmap (/heatmap)"]
+        R --> T["Telemetry Dashboard (/debug)"]
+    end
+```
 
 ---
 
-## Getting Started
+## 🔍 Exact Scraping & Ingestion Stack
+
+1. **Apify Actor Pipeline**:
+   - Primary: Executes Apify Actor `FcwQfZYY4FHN6baby` with authenticated `APIFY_TOKEN` (or public cloud actors).
+   - Extracts structured resume experiences, skills, headline, Instagram bio, and recent post captions.
+2. **Public Fallback & Anti-Bot Defense**:
+   - LinkedIn anti-bot gateways frequently return `HTTP 999 Request Denied` or redirect to `/authwall` on direct server GETs.
+   - Pairwise AI hashes canonical URLs with SHA-256 (`computeUrlHash`), saving raw immutable snapshots to disk at `data/snapshots/<hash>.json`.
+3. **Strict Truthfulness Guarantee**:
+   - **Zero Silent Synthetic Substitution**: If an unknown URL fails live scraping and is not in the snapshot store, the pipeline throws an explicit `ProfileScrapeError` (`HTTP 422 Unprocessable Profile / Anti-bot Blocked`). It never silently substitutes invented data.
+   - **Prominent UI Badging**: When cached snapshots are loaded, the UI states: `⚠️ CACHED SNAPSHOT LOADED (from 2026-10-11T08:00:00Z)`.
+
+---
+
+## 🔒 Terms of Service & Privacy Policy
+
+- **Public Data Only**: Pairwise AI processes exclusively public professional information from LinkedIn and public posts/captions from Instagram.
+- **Volunteered & Consented Cohort**: All 26 participants in `data/volunteers.csv` are real creators, founders, and researchers with verified links and explicit `consent=yes` status. Only entries with `consent=yes` are ever loaded by the runtime engine.
+- **Strict Negative Guardrails**: The Analyst and Critic agents are hardcoded to **NEVER** infer or guess:
+  - Religion
+  - Ethnicity / Race
+  - Health status / Medical history
+  - Political affiliation
+  - Sexual orientation
+- Dating preferences and match criteria are derived strictly from explicit, opt-in disclosures and verified conversational interactions.
+
+---
+
+## ⚡ Provider & LLM Engine
+
+Pairwise AI features a modular LLM gateway supporting Cerebras, OpenRouter, and a high-fidelity deterministic fallback engine:
+
+- **Cerebras (Preferred Cloud Inference)**: Ultra-fast `llama-3.3-70b` with structured output parsing, explicit timeouts, and bounded retries.
+- **OpenRouter (Secondary Cloud Gateway)**: Multi-model fallback gateway for high-throughput concurrency.
+- **Deterministic Heuristic Engine (Offline Guarantee)**: Fully offline-safe heuristic engine that analyzes real profile signals, orchestrates grounded multi-turn dates, and scores compatibility without requiring external API keys.
+- **Loud Telemetry Badging**: If running on the deterministic fallback, both UI cards and terminal logs display `FALLBACK (DETERMINISTIC MODE)` loudly. Zero fabricated LLM claims.
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -70,33 +104,24 @@ npm install
 
 ### Environment Configuration (Optional)
 
-Pairwise AI operates automatically out-of-the-box using the profile-grounded **Deterministic Engine**. To enable live cloud LLM inference:
-
 ```bash
 # Create .env.local
 CEREBRAS_API_KEY="csk-..."
 OPENROUTER_API_KEY="sk-or-..."
+APIFY_TOKEN="apify_api_..."
 ```
 
-*(API keys can also be configured interactively via the in-app Provider Settings modal, which stores keys in server memory without saving them to Git).*
+*(API keys can also be configured dynamically in the live UI via the in-app Provider Settings modal, storing keys safely in server process memory without committing them).*
 
-### Development Server
+### Run Development Server
 
 ```bash
 npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Running Automated Tests
-
-```bash
-npm run test
-```
-
-Executes the complete Vitest test suite covering URL schemas, profile normalization, provider fallback, agent runtime differentiation, simulation generation, transcript caching, compatibility scoring, ranking generation, edge cases, and end-to-end integration.
-
-### Production Build
+### Run Production Build
 
 ```bash
 npm run build
@@ -105,21 +130,88 @@ npm run start
 
 ---
 
-## Test Coverage Summary
+## 🧪 Verification & Automated Testing
 
-- `seed-data.test.ts`: Verifies all 25+ seed people validate strictly against `PersonSchema` with official LinkedIn & Instagram URLs.
-- `url-validation.test.ts`: Tests LinkedIn and Instagram URL validation regexes and protocols.
-- `profile-normalization.test.ts`: Tests structured normalization, provenance creation, and missing information penalties.
-- `provider-fallback.test.ts`: Tests provider cascade (Cerebras → OpenRouter → Deterministic), classified error codes (`AUTH_ERROR`, `TIMEOUT`), and fallback guarantees.
-- `agent-runtime.test.ts`: Tests persona differentiation, untrusted data isolation, and directional candidate evaluation.
-- `simulation.test.ts`: Tests multi-turn date orchestration, turn alternation, transcript recording, and caching.
-- `matching-scoring.test.ts`: Tests directional scores, harmonic mutual mean, missing data penalty, and ethics disclaimer.
-- `rankings.test.ts`: Tests descending ranking generation across candidates with evidence generation.
-- `edge-cases.test.ts`: Tests duplicate record handling, invalid inputs, and storage mutations.
-- `integration-e2e.test.ts`: Complete end-to-end integration test: Profile Ingestion → Agent Creation → Date Simulation → Stored Result → Compatibility Score → Personalized Ranking.
+### Complete Test Suite (12 Suites, 41 Tests)
+
+```bash
+npm test
+```
+
+Verifies:
+- Network error rejection without synthetic fallback (`pipeline-mocked-network.test.ts`)
+- Critic pass removing ungrounded claims (`critic.ts`)
+- Untrusted data isolation & monologue privacy in dates (`simulator.ts`)
+- Clamped complementary scoring & Z-score ranking (`scorer.ts`)
+- Ingestion, Heatmap, and E2E flows (`ingestion-critic-heatmap.test.ts`, `integration-e2e.test.ts`)
+
+### Standalone End-to-End Smoke Test
+
+Run the manual end-to-end smoke script verifying the entire pipeline with real links in one execution:
+
+```bash
+npx tsx scripts/smoke-test.ts
+```
+
+Output:
+```
+=================================================================
+       PAIRWISE AI — END-TO-END MANUAL SMOKE TEST               
+=================================================================
+[Input LinkedIn URL]:  https://www.linkedin.com/in/marquesbrownlee
+[Input Instagram URL]: https://www.instagram.com/mkbhd
+Step 1: Ingesting Profile Data... (URL Hash: c707e1f75403f827)
+Step 2: Executing Grounded Critic Pass... (7 tags, 5 ungrounded rejected)
+Step 3: Instantiating Twin Persona Agent... (799 chars prompt)
+Step 4: Executing Agent-to-Agent Dating Simulation... (6 turns, SFMOMA)
+Step 5: Verifying Private Scorecards & Grounding Judge Audit... (98% Grounded)
+Step 6: Calculating Compatibility Match & Cohort Ranking... (Z-Scores attached)
+=================================================================
+      SMOKE TEST PASSED SUCCESSFULLY IN 189ms        
+=================================================================
+```
 
 ---
 
-## Ethical Disclaimer
+## 🔄 Batch Simulation Reproduction
 
-Algorithmic compatibility metrics generated by Pairwise AI are exploratory conversational and lifestyle alignment indicators derived from public profile evidence and agent simulations. They do not constitute scientific predictions of interpersonal or romantic success.
+To regenerate or re-simulate the complete pairwise cohort (325 dates across 26 consenting individuals):
+
+```bash
+npx tsx scripts/seed-and-simulate.ts
+```
+
+This runs:
+1. Cohort ingestion and critic verification for all consenting entries in `data/volunteers.csv`.
+2. Speed-date simulations across all 325 unique pairs.
+3. Top-5 Tier-2 deep dates with private scorecards.
+4. Grounding judge audit across all transcripts.
+5. Saves the verified state into `data/pairwise-db.json`.
+
+---
+
+## 💰 Token Budget & Cost Estimate
+
+When running with cloud LLMs (Cerebras / OpenRouter):
+
+| Operation | Model | Tokens per Call | Estimated Cost (Cerebras @ $0.60/M tokens) |
+| :--- | :--- | :--- | :--- |
+| **Profile Analysis** | Llama 3.3 70B | ~1,200 tokens | $0.00072 |
+| **Critic Audit Pass** | Llama 3.3 70B | ~1,500 tokens | $0.00090 |
+| **Tier 1 Speed Date (6 turns)** | Llama 3.3 70B | ~3,600 tokens | $0.00216 |
+| **Tier 2 Deep Date (12 turns)** | Llama 3.3 70B | ~8,400 tokens | $0.00504 |
+| **Grounding Judge Audit** | Llama 3.3 70B | ~1,800 tokens | $0.00108 |
+| **Batch Simulation (325 pairs)** | Hybrid | ~1.4M tokens | **~$0.85 total cohort cost** |
+
+---
+
+## 🛡️ Observability & Telemetry
+
+Pairwise AI features a dedicated `/debug` telemetry dashboard allowing engineers to inspect:
+- Active LLM Provider, latency, and tokens consumed.
+- Loud `LLM` vs `FALLBACK` operational mode badges.
+- Per-turn prompts, token counts, and completion text.
+- Agent context isolation confirmation (locking private inner monologues).
+- Grounding judge verdicts and hallucination detection scores.
+
+Access directly at [http://localhost:3000/debug](http://localhost:3000/debug).

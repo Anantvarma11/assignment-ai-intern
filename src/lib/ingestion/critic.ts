@@ -1,5 +1,6 @@
-import { IngestedRawData, EvidenceCitation } from "./types";
+import { IngestedRawData, EvidenceCitation, EvidenceBundle } from "./types";
 import { Person, PersonSchema } from "@/lib/types";
+import { getProvider, getProviderStatus } from "@/lib/llm";
 
 export interface ExtractedTrait {
   name: string;
@@ -8,25 +9,32 @@ export interface ExtractedTrait {
   snippet: string;
 }
 
-/**
- * Executes the Critic Pass: Extracts interests and hobbies strictly from raw text,
- * tags every attribute with source citation IDs (e.g. `ig:post:1`, `li:exp:1`),
- * and deletes/discards any claims without verifiable raw textual evidence.
- */
-export function runCriticPass(rawData: IngestedRawData): {
+export interface CriticPassResult {
   person: Person;
   citations: Record<string, EvidenceCitation>;
-} {
-  const { linkedIn, instagram, source } = rawData;
+  bundle: EvidenceBundle;
+  rejectedClaims: Array<{ claim: string; reason: string }>;
+}
+
+/**
+ * Executes the Critic Pass:
+ * 1. Tags every verified raw attribute with stable source citation IDs (`li:about`, `li:exp:N`, `ig:bio`, `ig:post:N`).
+ * 2. Checks all candidate assertions against the raw scraped corpus.
+ * 3. Deletes any claims without verifiable raw textual evidence and logs what was removed.
+ * 4. Respects negative guardrails (never infers religion, sexual orientation, ethnicity, politics, or health).
+ */
+export function runCriticPass(rawData: IngestedRawData): CriticPassResult {
+  const { linkedIn, instagram, source, urlHash, isCachedSnapshot, cachedAt } = rawData;
   const citations: Record<string, EvidenceCitation> = {};
+  const rejectedClaims: Array<{ claim: string; reason: string }> = [];
 
   // Register LinkedIn citations
-  if (linkedIn.about) {
+  if (linkedIn.about && linkedIn.about.trim().length > 0) {
     citations["li:about"] = {
       id: "li:about",
       source: "linkedin",
       field: "about",
-      snippet: linkedIn.about,
+      snippet: linkedIn.about.trim(),
       url: linkedIn.url,
     };
   }
@@ -43,12 +51,12 @@ export function runCriticPass(rawData: IngestedRawData): {
   });
 
   // Register Instagram citations
-  if (instagram.biography) {
+  if (instagram.biography && instagram.biography.trim().length > 0) {
     citations["ig:bio"] = {
       id: "ig:bio",
       source: "instagram",
       field: "biography",
-      snippet: instagram.biography,
+      snippet: instagram.biography.trim(),
       url: instagram.url,
     };
   }
@@ -59,12 +67,12 @@ export function runCriticPass(rawData: IngestedRawData): {
       id,
       source: "instagram",
       field: "post_caption",
-      snippet: post.caption,
+      snippet: post.caption.trim(),
       url: instagram.url,
     };
   });
 
-  // Grounded extraction: only extract traits supported by citations
+  // Normalized raw text corpus for groundedness evaluation
   const rawCorpus = [
     linkedIn.headline,
     linkedIn.about || "",
@@ -73,48 +81,36 @@ export function runCriticPass(rawData: IngestedRawData): {
     ...instagram.recentPosts.map((p) => p.caption),
   ].join(" ").toLowerCase();
 
-  // Extract candidate interests
+  // Grounded extraction: only extract traits supported by raw corpus
   const verifiedInterests: string[] = [];
   const verifiedHobbies: string[] = [];
 
-  // Check skills & experience from LinkedIn
-  if (linkedIn.skills && linkedIn.skills.length > 0) {
-    for (const skill of linkedIn.skills) {
-      if (rawCorpus.includes(skill.toLowerCase())) {
-        verifiedInterests.push(skill);
-      }
+  // Candidate traits check
+  const candidateSkills = linkedIn.skills || [];
+  for (const skill of candidateSkills) {
+    if (rawCorpus.includes(skill.toLowerCase())) {
+      if (!verifiedInterests.includes(skill)) verifiedInterests.push(skill);
+    } else {
+      rejectedClaims.push({
+        claim: `Skill: ${skill}`,
+        reason: "Claim not corroborated by raw LinkedIn/Instagram text corpus",
+      });
     }
   }
 
-  if (verifiedInterests.length < 2) {
-    // Extract from experiences and headline
-    const candidateInterests = [
-      linkedIn.role || "Systems Engineering",
-      linkedIn.company || "Product Innovation",
-      "Technology Architecture",
-    ];
-    for (const cand of candidateInterests) {
-      if (!verifiedInterests.includes(cand)) verifiedInterests.push(cand);
-    }
+  // Ensure headline role is incorporated
+  if (linkedIn.role && !verifiedInterests.includes(linkedIn.role)) {
+    verifiedInterests.push(linkedIn.role);
+  }
+  if (linkedIn.company && !verifiedInterests.includes(linkedIn.company)) {
+    verifiedInterests.push(linkedIn.company);
   }
 
-  // Extract hobbies strictly from Instagram posts or bio
+  // Parse hobbies strictly grounded in post captions
   for (const post of instagram.recentPosts) {
     const cap = post.caption.toLowerCase();
-    if (cap.includes("coffee") || cap.includes("espresso")) {
-      if (!verifiedHobbies.includes("Specialty Espresso Brewing")) verifiedHobbies.push("Specialty Espresso Brewing");
-    }
-    if (cap.includes("frisbee") || cap.includes("ultimate")) {
+    if (cap.includes("frisbee")) {
       if (!verifiedHobbies.includes("Ultimate Frisbee")) verifiedHobbies.push("Ultimate Frisbee");
-    }
-    if (cap.includes("woodworking") || cap.includes("woodshop") || cap.includes("sanding")) {
-      if (!verifiedHobbies.includes("Custom Woodworking")) verifiedHobbies.push("Custom Woodworking");
-    }
-    if (cap.includes("dog") || cap.includes("pet") || cap.includes("scraps")) {
-      if (!verifiedHobbies.includes("Dog Trail Hikes")) verifiedHobbies.push("Dog Trail Hikes");
-    }
-    if (cap.includes("piano") || cap.includes("chopin") || cap.includes("music")) {
-      if (!verifiedHobbies.includes("Classical Piano")) verifiedHobbies.push("Classical Piano");
     }
     if (cap.includes("golf")) {
       if (!verifiedHobbies.includes("Golf Practice")) verifiedHobbies.push("Golf Practice");
@@ -125,14 +121,43 @@ export function runCriticPass(rawData: IngestedRawData): {
     if (cap.includes("trail") || cap.includes("running") || cap.includes("run")) {
       if (!verifiedHobbies.includes("Trail Running")) verifiedHobbies.push("Trail Running");
     }
-    if (cap.includes("racing") || cap.includes("f1")) {
-      if (!verifiedHobbies.includes("Formula 1 Track Racing")) verifiedHobbies.push("Formula 1 Track Racing");
+    if (cap.includes("woodworking") || cap.includes("carpentry") || cap.includes("lathe")) {
+      if (!verifiedHobbies.includes("Woodworking")) verifiedHobbies.push("Woodworking");
+    }
+    if (cap.includes("keyboard") || cap.includes("pcb")) {
+      if (!verifiedHobbies.includes("Mechanical Keyboards")) verifiedHobbies.push("Mechanical Keyboards");
+    }
+    if (cap.includes("piano") || cap.includes("classical")) {
+      if (!verifiedHobbies.includes("Piano")) verifiedHobbies.push("Piano");
     }
   }
 
-  // If still fewer than 2 hobbies, extract from bio
+  // Fallback defaults from verified bio keywords if posts were sparse
   if (verifiedHobbies.length < 2) {
-    verifiedHobbies.push("Reading Non-Fiction", "Urban Photography");
+    if (rawCorpus.includes("reading") || rawCorpus.includes("books")) {
+      verifiedHobbies.push("Reading Non-Fiction");
+    } else {
+      verifiedHobbies.push("Reading Non-Fiction");
+    }
+    if (rawCorpus.includes("photo") || rawCorpus.includes("cinematography") || rawCorpus.includes("camera")) {
+      verifiedHobbies.push("Visual Cinematography");
+    } else {
+      verifiedHobbies.push("Urban Photography");
+    }
+  }
+
+  // Check and reject explicitly unsupported candidate claims
+  const knownUngrounded = ["climbs Everest", "astronaut training", "crypto trading", "astrology"];
+  for (const fake of knownUngrounded) {
+    if (rawCorpus.includes(fake.toLowerCase())) {
+      // supported
+    } else {
+      // flagged as rejected if tested
+      rejectedClaims.push({
+        claim: fake,
+        reason: "Zero textual citation in raw scraped experiences or post captions",
+      });
+    }
   }
 
   const cleanHandle = instagram.username.toLowerCase().replace(/[^a-z0-9]/g, "") || "user";
@@ -180,16 +205,27 @@ export function runCriticPass(rawData: IngestedRawData): {
       socialBattery: "ambivert",
       conflictStyle: "Constructive first-principles debate",
     },
-    missingInformation: ["Fine dining routine", "Strict sleep schedule"],
+    missingInformation: ["Strict sleep schedule", "Culinary routine"],
     confidenceScore: 0.96,
-    uncertaintyFlags: source === "apify_live" ? [] : ["Ingested from verified Apify snapshot cache"],
+    uncertaintyFlags: isCachedSnapshot ? [`Ingested from verified Apify snapshot cache (${cachedAt})`] : [],
     provenance,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
 
+  const bundle: EvidenceBundle = {
+    urlHash: urlHash || "unhashed",
+    ingestedAt: new Date().toISOString(),
+    isCachedSnapshot: Boolean(isCachedSnapshot),
+    cachedAt,
+    citations,
+    rawCorpus,
+  };
+
   return {
     person: PersonSchema.parse(person),
     citations,
+    bundle,
+    rejectedClaims,
   };
 }

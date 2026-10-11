@@ -42,12 +42,25 @@ export interface IngestedRawData {
   instagram: RawInstagramProfile;
   source: "apify_live" | "snapshot_cache";
   actorRunId?: string;
+  urlHash?: string;
+  isCachedSnapshot?: boolean;
+  cachedAt?: string;
+  snapshotPath?: string;
 }
 
 export interface EvidenceCitation {
-  id: string; // e.g. "li:exp:1" or "ig:post:2" or "li:about" or "ig:bio"
+  id: string; // e.g. "li:exp:1" | "ig:post:2" | "li:about" | "ig:bio"
   source: "linkedin" | "instagram";
   field: string;
   snippet: string;
   url: string;
+}
+
+export interface EvidenceBundle {
+  urlHash: string;
+  ingestedAt: string;
+  isCachedSnapshot: boolean;
+  cachedAt?: string;
+  citations: Record<string, EvidenceCitation>;
+  rawCorpus: string;
 }

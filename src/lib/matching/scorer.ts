@@ -202,7 +202,7 @@ export function calculateCompatibility(
       lifestyleAlignmentScore,
       preferenceFulfillmentScore,
       simulationInteractionScore,
-      complementaryBonus: Math.round((secondDateMultiplier - 1) * 50),
+      complementaryBonus: Math.max(0, Math.min(10, Math.round((secondDateMultiplier - 1) * 50))),
     },
     weightsUsed: weights,
     sharedInterestsList,
@@ -223,7 +223,13 @@ export function calculateCompatibility(
 export async function getPersonalizedRankings(
   subjectId: string,
   limit: number = 26
-): Promise<Array<{ candidate: Person; match: CompatibilityMatch; simulation: DatingSimulation | null }>> {
+): Promise<Array<{
+  candidate: Person;
+  match: CompatibilityMatch;
+  simulation: DatingSimulation | null;
+  zScore: number;
+  whySummary: string;
+}>> {
   const subject = db.getPersonById(subjectId);
   if (!subject) {
     throw new Error(`Person with id "${subjectId}" not found.`);
@@ -232,18 +238,51 @@ export async function getPersonalizedRankings(
   const allPeople = db.getPeople();
   const candidates = allPeople.filter((p) => p.id !== subjectId);
 
-  const results: Array<{ candidate: Person; match: CompatibilityMatch; simulation: DatingSimulation | null }> = [];
+  const rawMatches: Array<{ candidate: Person; match: CompatibilityMatch; simulation: DatingSimulation | null }> = [];
 
   for (const candidate of candidates) {
     const simulation = db.findSimulationForPair(subject.id, candidate.id);
     const match = calculateCompatibility(subject, candidate, simulation);
     db.saveMatch(match);
-    results.push({
+    rawMatches.push({
       candidate,
       match,
       simulation,
     });
   }
+
+  // Calculate cohort mean and standard deviation for Z-score normalization
+  const scores = rawMatches.map((r) => r.match.mutualCompatibility);
+  const mean = scores.reduce((sum, s) => sum + s, 0) / (scores.length || 1);
+  const variance = scores.reduce((sum, s) => sum + Math.pow(s - mean, 2), 0) / (scores.length || 1);
+  const stdDev = Math.sqrt(variance) || 1;
+
+  const results = rawMatches.map((r) => {
+    const zScore = Number(((r.match.mutualCompatibility - mean) / stdDev).toFixed(2));
+    
+    // Asymmetric blend: own directional preference weighted higher (65%) than candidate's (35%)
+    const blendedDirectional = Math.round(
+      r.match.directionalCompatibility.subjectToCandidate * 0.65 +
+      r.match.directionalCompatibility.candidateToSubject * 0.35
+    );
+
+    let whySummary = "";
+    if (r.simulation && r.simulation.evaluation) {
+      whySummary = `${r.simulation.evaluation.narrativeSummary} ${
+        r.simulation.evaluation.standoutMoments[0] ? `Key highlight: ${r.simulation.evaluation.standoutMoments[0]}.` : ""
+      }`;
+    } else {
+      whySummary = `Projected high affinity based on shared interests in ${r.match.sharedInterestsList.join(", ") || "creative pursuits"}.`;
+    }
+
+    return {
+      candidate: r.candidate,
+      match: r.match,
+      simulation: r.simulation,
+      zScore,
+      whySummary,
+    };
+  });
 
   // Sort descending by mutual compatibility
   results.sort((a, b) => b.match.mutualCompatibility - a.match.mutualCompatibility);

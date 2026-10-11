@@ -141,10 +141,34 @@ export const SimulationEvaluationSchema = z.object({
 
 export type SimulationEvaluation = z.infer<typeof SimulationEvaluationSchema>;
 
+export const AgentPostDateScorecardSchema = z.object({
+  evaluatorId: z.string(),
+  candidateId: z.string(),
+  chemistryScore: z.number().min(0).max(100),
+  valuesFitScore: z.number().min(0).max(100),
+  interestOverlapScore: z.number().min(0).max(100),
+  goalAlignmentScore: z.number().min(0).max(100),
+  redFlags: z.array(z.string()),
+  wouldSeeAgain: z.boolean(),
+  privateNotes: z.string(),
+});
+
+export type AgentPostDateScorecard = z.infer<typeof AgentPostDateScorecardSchema>;
+
+export const GroundingAuditSchema = z.object({
+  groundingScore: z.number().min(0).max(100),
+  auditedClaimsCount: z.number(),
+  hallucinationsDetected: z.array(z.string()),
+  verdict: z.enum(["fully_grounded", "mostly_grounded", "unverified_claims"]),
+});
+
+export type GroundingAudit = z.infer<typeof GroundingAuditSchema>;
+
 export const DatingSimulationSchema = z.object({
   id: z.string(),
   personAId: z.string(),
   personBId: z.string(),
+  tier: z.enum(["speed_date", "deep_second_date"]).optional(),
   venue: z.object({
     name: z.string(),
     setting: z.string(),
@@ -156,6 +180,9 @@ export const DatingSimulationSchema = z.object({
   modelUsed: z.string(),
   completedAt: z.string(),
   evaluation: SimulationEvaluationSchema,
+  scorecardA: AgentPostDateScorecardSchema.optional(),
+  scorecardB: AgentPostDateScorecardSchema.optional(),
+  groundingAudit: GroundingAuditSchema.optional(),
 });
 
 export type DatingSimulation = z.infer<typeof DatingSimulationSchema>;

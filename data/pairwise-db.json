@@ -28626,6 +28626,356 @@
         ],
         "secondDateLikelihood": "high"
       }
+    },
+    "sim-mkbhd-simonegiertz-mv3h3tv0": {
+      "id": "sim-mkbhd-simonegiertz-mv3h3tv0",
+      "personAId": "person-mkbhd",
+      "personBId": "person-simonegiertz",
+      "venue": {
+        "name": "SFMOMA Sculpture Terrace",
+        "setting": "Modernist outdoor rooftop overlooking city lights and Alexander Calder mobiles",
+        "atmosphere": "Sophisticated, artistic, open-air reflection"
+      },
+      "openingContext": "A private conversation arranged at SFMOMA Sculpture Terrace. Both parties arrived with curiosity about each other's work and life philosophies.",
+      "turns": [
+        {
+          "speakerId": "person-mkbhd",
+          "speakerName": "Marques Brownlee",
+          "turnIndex": 0,
+          "message": "It's wonderful to meet you here at SFMOMA Sculpture Terrace. I was just observing the ambience—it has this rare stillness that reminds me of early mornings when I'm immersed in consumer electronics. How has your day been treating you, Simone?",
+          "internalMonologue": "Appreciating the setting; curious to see if Simone Giertz enjoys mindful conversation or fast-paced banter.",
+          "vibeSignal": "curious"
+        },
+        {
+          "speakerId": "person-simonegiertz",
+          "speakerName": "Simone Giertz",
+          "turnIndex": 1,
+          "message": "That's very kind of you! It's so refreshing to step away from the usual rhythm of Yetch Store. I've noticed you bring a real passion to industrial design—what drew you into that realm initially?",
+          "internalMonologue": "Testing mutual conversational rhythm and depth.",
+          "vibeSignal": "engaged"
+        },
+        {
+          "speakerId": "person-mkbhd",
+          "speakerName": "Marques Brownlee",
+          "turnIndex": 2,
+          "message": "What you're describing connects so much to how I approach electric vehicles. For me, whether it's navigating complex challenges or unwinding with ultimate frisbee (audl), it comes down to intentional craftsmanship and presence. Do you ever find yourself needing a total unplug from it all?",
+          "internalMonologue": "Enjoying the natural flow. There's real intellectual resonance here.",
+          "vibeSignal": "engaged"
+        },
+        {
+          "speakerId": "person-simonegiertz",
+          "speakerName": "Simone Giertz",
+          "turnIndex": 3,
+          "message": "Absolutely. In my world, staying grounded through embracing imperfections is non-negotiable. I love that you don't take yourself overly seriously despite the scale of what you do—a great sense of humor makes all the difference!",
+          "internalMonologue": "Delighted by the lack of pretension. Genuine spark of warmth.",
+          "vibeSignal": "delighted"
+        }
+      ],
+      "providerUsed": "deterministic",
+      "modelUsed": "deterministic-heuristic-v1",
+      "completedAt": "2026-10-11T06:59:53.196Z",
+      "evaluation": {
+        "chemistryScore": 78,
+        "intellectualScore": 90,
+        "humorAlignmentScore": 80,
+        "vibeMatchScore": 88,
+        "conversationalFlowScore": 88,
+        "overallSimulationScore": 85,
+        "narrativeSummary": "A rich, grounded exploration between Marques Brownlee and Simone Giertz. The conversation demonstrated strong mutual respect for craftsmanship, shared intellectual depth, and genuine engagement.",
+        "standoutMoments": [
+          "Engaging exchange connecting Consumer Electronics with Product Prototyping",
+          "Mutual appreciation for authentic communication and disciplined lifestyle values"
+        ],
+        "potentialFrictionPoints": [
+          "Both lead demanding, high-intensity careers requiring intentional scheduling coordination"
+        ],
+        "secondDateLikelihood": "high"
+      }
+    },
+    "sim-mkbhd-simonegiertz-mv3h6bx6": {
+      "id": "sim-mkbhd-simonegiertz-mv3h6bx6",
+      "personAId": "person-mkbhd",
+      "personBId": "person-simonegiertz",
+      "venue": {
+        "name": "SFMOMA Sculpture Terrace",
+        "setting": "Modernist outdoor rooftop overlooking city lights and Alexander Calder mobiles",
+        "atmosphere": "Sophisticated, artistic, open-air reflection"
+      },
+      "openingContext": "A private conversation arranged at SFMOMA Sculpture Terrace. Both parties arrived with curiosity about each other's work and life philosophies.",
+      "turns": [
+        {
+          "speakerId": "person-mkbhd",
+          "speakerName": "Marques Brownlee",
+          "turnIndex": 0,
+          "message": "It's wonderful to meet you here at SFMOMA Sculpture Terrace. I was just observing the ambience—it has this rare stillness that reminds me of early mornings when I'm immersed in consumer electronics. How has your day been treating you, Simone?",
+          "internalMonologue": "Appreciating the setting; curious to see if Simone Giertz enjoys mindful conversation or fast-paced banter.",
+          "vibeSignal": "curious"
+        },
+        {
+          "speakerId": "person-simonegiertz",
+          "speakerName": "Simone Giertz",
+          "turnIndex": 1,
+          "message": "That's very kind of you! It's so refreshing to step away from the usual rhythm of Yetch Store. I've noticed you bring a real passion to industrial design—what drew you into that realm initially?",
+          "internalMonologue": "Testing mutual conversational rhythm and depth.",
+          "vibeSignal": "engaged"
+        },
+        {
+          "speakerId": "person-mkbhd",
+          "speakerName": "Marques Brownlee",
+          "turnIndex": 2,
+          "message": "What you're describing connects so much to how I approach electric vehicles. For me, whether it's navigating complex challenges or unwinding with ultimate frisbee (audl), it comes down to intentional craftsmanship and presence. Do you ever find yourself needing a total unplug from it all?",
+          "internalMonologue": "Enjoying the natural flow. There's real intellectual resonance here.",
+          "vibeSignal": "engaged"
+        },
+        {
+          "speakerId": "person-simonegiertz",
+          "speakerName": "Simone Giertz",
+          "turnIndex": 3,
+          "message": "Absolutely. In my world, staying grounded through embracing imperfections is non-negotiable. I love that you don't take yourself overly seriously despite the scale of what you do—a great sense of humor makes all the difference!",
+          "internalMonologue": "Delighted by the lack of pretension. Genuine spark of warmth.",
+          "vibeSignal": "delighted"
+        }
+      ],
+      "providerUsed": "deterministic",
+      "modelUsed": "deterministic-heuristic-v1",
+      "completedAt": "2026-10-11T07:01:49.914Z",
+      "evaluation": {
+        "chemistryScore": 78,
+        "intellectualScore": 90,
+        "humorAlignmentScore": 80,
+        "vibeMatchScore": 88,
+        "conversationalFlowScore": 88,
+        "overallSimulationScore": 55,
+        "narrativeSummary": "A rich, grounded exploration between Marques Brownlee and Simone Giertz. The conversation demonstrated strong mutual respect for craftsmanship, shared intellectual depth, and genuine engagement.",
+        "standoutMoments": [
+          "Engaging exchange connecting Consumer Electronics with Product Prototyping",
+          "Mutual appreciation for authentic communication and disciplined lifestyle values"
+        ],
+        "potentialFrictionPoints": [
+          "Both lead demanding, high-intensity careers requiring intentional scheduling coordination"
+        ],
+        "secondDateLikelihood": "high"
+      }
+    },
+    "sim-mkbhd-simonegiertz-mv3higs6": {
+      "id": "sim-mkbhd-simonegiertz-mv3higs6",
+      "personAId": "person-mkbhd",
+      "personBId": "person-simonegiertz",
+      "tier": "speed_date",
+      "venue": {
+        "name": "SFMOMA Sculpture Terrace",
+        "setting": "Modernist outdoor rooftop overlooking city lights and Alexander Calder mobiles",
+        "atmosphere": "Sophisticated, artistic, open-air reflection"
+      },
+      "openingContext": "An introductory speed-date meeting arranged at SFMOMA Sculpture Terrace. Both participants explored mutual conversational rhythm.",
+      "turns": [
+        {
+          "speakerId": "person-mkbhd",
+          "speakerName": "Marques Brownlee",
+          "turnIndex": 0,
+          "message": "It's wonderful to meet you here at SFMOMA Sculpture Terrace. I was just observing the ambience—it has this rare stillness that reminds me of early mornings when I'm immersed in consumer electronics. How has your day been treating you, Simone?",
+          "internalMonologue": "Appreciating the setting; curious to see if Simone Giertz enjoys mindful conversation or fast-paced banter.",
+          "vibeSignal": "curious"
+        },
+        {
+          "speakerId": "person-simonegiertz",
+          "speakerName": "Simone Giertz",
+          "turnIndex": 1,
+          "message": "That's very kind of you! It's so refreshing to step away from the usual rhythm of Yetch Store. I've noticed you bring a real passion to industrial design—what drew you into that realm initially?",
+          "internalMonologue": "Testing mutual conversational rhythm and depth.",
+          "vibeSignal": "engaged"
+        },
+        {
+          "speakerId": "person-mkbhd",
+          "speakerName": "Marques Brownlee",
+          "turnIndex": 2,
+          "message": "What you're describing connects so much to how I approach electric vehicles. For me, whether it's navigating complex challenges or unwinding with golf practice, it comes down to intentional craftsmanship and presence. Do you ever find yourself needing a total unplug from it all?",
+          "internalMonologue": "Enjoying the natural flow. There's real intellectual resonance here.",
+          "vibeSignal": "engaged"
+        },
+        {
+          "speakerId": "person-simonegiertz",
+          "speakerName": "Simone Giertz",
+          "turnIndex": 3,
+          "message": "Absolutely. In my world, staying grounded through embracing imperfections is non-negotiable. I love that you don't take yourself overly seriously despite the scale of what you do—a great sense of humor makes all the difference!",
+          "internalMonologue": "Delighted by the lack of pretension. Genuine spark of warmth.",
+          "vibeSignal": "delighted"
+        },
+        {
+          "speakerId": "person-mkbhd",
+          "speakerName": "Marques Brownlee",
+          "turnIndex": 4,
+          "message": "This conversation has honestly flown by. Between talking about founder & executive producer and hearing your take on rescue animals, I feel like we could spend hours unpacking this. What's one pursuit you're hoping to explore next?",
+          "internalMonologue": "Feeling a very positive connection. Strong second date potential.",
+          "vibeSignal": "playful"
+        },
+        {
+          "speakerId": "person-simonegiertz",
+          "speakerName": "Simone Giertz",
+          "turnIndex": 5,
+          "message": "I couldn't agree more. Thank you for such an invigorating evening at SFMOMA Sculpture Terrace—this was easily one of the most engaging conversations I've had in a long time. I'd love to continue this over coffee or another walk soon.",
+          "internalMonologue": "Clear positive impression; eager for a second conversation.",
+          "vibeSignal": "delighted"
+        }
+      ],
+      "providerUsed": "deterministic",
+      "modelUsed": "deterministic-heuristic-v1",
+      "completedAt": "2026-10-11T07:11:16.086Z",
+      "evaluation": {
+        "chemistryScore": 78,
+        "intellectualScore": 90,
+        "humorAlignmentScore": 80,
+        "vibeMatchScore": 88,
+        "conversationalFlowScore": 91,
+        "overallSimulationScore": 85,
+        "narrativeSummary": "A rich, grounded exploration between Marques Brownlee and Simone Giertz. The conversation demonstrated strong mutual respect for craftsmanship, shared intellectual depth, and genuine engagement.",
+        "standoutMoments": [
+          "Engaging exchange connecting Consumer Electronics with Product Prototyping",
+          "Mutual appreciation for authentic communication and disciplined lifestyle values"
+        ],
+        "potentialFrictionPoints": [
+          "Both lead demanding, high-intensity careers requiring intentional scheduling coordination"
+        ],
+        "secondDateLikelihood": "high"
+      },
+      "scorecardA": {
+        "evaluatorId": "person-mkbhd",
+        "candidateId": "person-simonegiertz",
+        "chemistryScore": 78,
+        "valuesFitScore": 90,
+        "interestOverlapScore": 50,
+        "goalAlignmentScore": 88,
+        "redFlags": [],
+        "wouldSeeAgain": true,
+        "privateNotes": "Marques Brownlee's internal review: Found Simone Giertz refreshingly authentic and engaging to converse with."
+      },
+      "scorecardB": {
+        "evaluatorId": "person-simonegiertz",
+        "candidateId": "person-mkbhd",
+        "chemistryScore": 78,
+        "valuesFitScore": 90,
+        "interestOverlapScore": 50,
+        "goalAlignmentScore": 88,
+        "redFlags": [],
+        "wouldSeeAgain": true,
+        "privateNotes": "Simone Giertz's internal review: Found Marques Brownlee refreshingly authentic and engaging to converse with."
+      },
+      "groundingAudit": {
+        "groundingScore": 98,
+        "auditedClaimsCount": 6,
+        "hallucinationsDetected": [],
+        "verdict": "fully_grounded"
+      }
+    },
+    "sim-mkbhd-simonegiertz-mv3hk663": {
+      "id": "sim-mkbhd-simonegiertz-mv3hk663",
+      "personAId": "person-mkbhd",
+      "personBId": "person-simonegiertz",
+      "tier": "speed_date",
+      "venue": {
+        "name": "SFMOMA Sculpture Terrace",
+        "setting": "Modernist outdoor rooftop overlooking city lights and Alexander Calder mobiles",
+        "atmosphere": "Sophisticated, artistic, open-air reflection"
+      },
+      "openingContext": "An introductory speed-date meeting arranged at SFMOMA Sculpture Terrace. Both participants explored mutual conversational rhythm.",
+      "turns": [
+        {
+          "speakerId": "person-mkbhd",
+          "speakerName": "Marques Brownlee",
+          "turnIndex": 0,
+          "message": "It's wonderful to meet you here at SFMOMA Sculpture Terrace. I was just observing the ambience—it has this rare stillness that reminds me of early mornings when I'm immersed in consumer electronics. How has your day been treating you, Simone?",
+          "internalMonologue": "Appreciating the setting; curious to see if Simone Giertz enjoys mindful conversation or fast-paced banter.",
+          "vibeSignal": "curious"
+        },
+        {
+          "speakerId": "person-simonegiertz",
+          "speakerName": "Simone Giertz",
+          "turnIndex": 1,
+          "message": "That's very kind of you! It's so refreshing to step away from the usual rhythm of Yetch Store. I've noticed you bring a real passion to industrial design—what drew you into that realm initially?",
+          "internalMonologue": "Testing mutual conversational rhythm and depth.",
+          "vibeSignal": "engaged"
+        },
+        {
+          "speakerId": "person-mkbhd",
+          "speakerName": "Marques Brownlee",
+          "turnIndex": 2,
+          "message": "What you're describing connects so much to how I approach electric vehicles. For me, whether it's navigating complex challenges or unwinding with golf practice, it comes down to intentional craftsmanship and presence. Do you ever find yourself needing a total unplug from it all?",
+          "internalMonologue": "Enjoying the natural flow. There's real intellectual resonance here.",
+          "vibeSignal": "engaged"
+        },
+        {
+          "speakerId": "person-simonegiertz",
+          "speakerName": "Simone Giertz",
+          "turnIndex": 3,
+          "message": "Absolutely. In my world, staying grounded through embracing imperfections is non-negotiable. I love that you don't take yourself overly seriously despite the scale of what you do—a great sense of humor makes all the difference!",
+          "internalMonologue": "Delighted by the lack of pretension. Genuine spark of warmth.",
+          "vibeSignal": "delighted"
+        },
+        {
+          "speakerId": "person-mkbhd",
+          "speakerName": "Marques Brownlee",
+          "turnIndex": 4,
+          "message": "This conversation has honestly flown by. Between talking about founder & executive producer and hearing your take on rescue animals, I feel like we could spend hours unpacking this. What's one pursuit you're hoping to explore next?",
+          "internalMonologue": "Feeling a very positive connection. Strong second date potential.",
+          "vibeSignal": "playful"
+        },
+        {
+          "speakerId": "person-simonegiertz",
+          "speakerName": "Simone Giertz",
+          "turnIndex": 5,
+          "message": "I couldn't agree more. Thank you for such an invigorating evening at SFMOMA Sculpture Terrace—this was easily one of the most engaging conversations I've had in a long time. I'd love to continue this over coffee or another walk soon.",
+          "internalMonologue": "Clear positive impression; eager for a second conversation.",
+          "vibeSignal": "delighted"
+        }
+      ],
+      "providerUsed": "deterministic",
+      "modelUsed": "deterministic-heuristic-v1",
+      "completedAt": "2026-10-11T07:12:35.643Z",
+      "evaluation": {
+        "chemistryScore": 78,
+        "intellectualScore": 90,
+        "humorAlignmentScore": 80,
+        "vibeMatchScore": 88,
+        "conversationalFlowScore": 91,
+        "overallSimulationScore": 85,
+        "narrativeSummary": "A rich, grounded exploration between Marques Brownlee and Simone Giertz. The conversation demonstrated strong mutual respect for craftsmanship, shared intellectual depth, and genuine engagement.",
+        "standoutMoments": [
+          "Engaging exchange connecting Consumer Electronics with Product Prototyping",
+          "Mutual appreciation for authentic communication and disciplined lifestyle values"
+        ],
+        "potentialFrictionPoints": [
+          "Both lead demanding, high-intensity careers requiring intentional scheduling coordination"
+        ],
+        "secondDateLikelihood": "high"
+      },
+      "scorecardA": {
+        "evaluatorId": "person-mkbhd",
+        "candidateId": "person-simonegiertz",
+        "chemistryScore": 78,
+        "valuesFitScore": 90,
+        "interestOverlapScore": 50,
+        "goalAlignmentScore": 88,
+        "redFlags": [],
+        "wouldSeeAgain": true,
+        "privateNotes": "Marques Brownlee's internal review: Found Simone Giertz refreshingly authentic and engaging to converse with."
+      },
+      "scorecardB": {
+        "evaluatorId": "person-simonegiertz",
+        "candidateId": "person-mkbhd",
+        "chemistryScore": 78,
+        "valuesFitScore": 90,
+        "interestOverlapScore": 50,
+        "goalAlignmentScore": 88,
+        "redFlags": [],
+        "wouldSeeAgain": true,
+        "privateNotes": "Simone Giertz's internal review: Found Marques Brownlee refreshingly authentic and engaging to converse with."
+      },
+      "groundingAudit": {
+        "groundingScore": 98,
+        "auditedClaimsCount": 6,
+        "hallucinationsDetected": [],
+        "verdict": "fully_grounded"
+      }
     }
   },
   "matches": {
@@ -28664,7 +29014,7 @@
       ],
       "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:49:25.306Z"
+      "calculatedAt": "2026-10-11T07:16:03.019Z"
     },
     "person-mkbhd:person-cleoabram": {
       "subjectId": "person-mkbhd",
@@ -28701,7 +29051,7 @@
       ],
       "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:49:25.313Z"
+      "calculatedAt": "2026-10-11T07:16:03.044Z"
     },
     "person-mkbhd:person-markrober": {
       "subjectId": "person-mkbhd",
@@ -28738,7 +29088,7 @@
       ],
       "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:49:25.319Z"
+      "calculatedAt": "2026-10-11T07:16:03.063Z"
     },
     "person-mkbhd:person-grantsanderson": {
       "subjectId": "person-mkbhd",
@@ -28778,7 +29128,7 @@
       ],
       "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:49:25.325Z"
+      "calculatedAt": "2026-10-11T07:16:03.077Z"
     },
     "person-mkbhd:person-hankgreen": {
       "subjectId": "person-mkbhd",
@@ -28815,7 +29165,7 @@
       ],
       "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:49:25.332Z"
+      "calculatedAt": "2026-10-11T07:16:03.082Z"
     },
     "person-mkbhd:person-caseyneistat": {
       "subjectId": "person-mkbhd",
@@ -28852,7 +29202,7 @@
       ],
       "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:49:25.340Z"
+      "calculatedAt": "2026-10-11T07:16:03.088Z"
     },
     "person-mkbhd:person-saradietschy": {
       "subjectId": "person-mkbhd",
@@ -28861,11 +29211,11 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 64,
+      "mutualCompatibility": 62,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
-        "lifestyleAlignmentScore": 82,
+        "lifestyleAlignmentScore": 90,
         "preferenceFulfillmentScore": 71,
         "simulationInteractionScore": 82,
         "complementaryBonus": 1
@@ -28887,9 +29237,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Dallas, Texas & New York City, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.050Z"
+      "calculatedAt": "2026-10-11T07:16:03.098Z"
     },
     "person-mkbhd:person-melanieperkins": {
       "subjectId": "person-mkbhd",
@@ -28898,11 +29248,11 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 65,
+      "mutualCompatibility": 63,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
-        "lifestyleAlignmentScore": 92,
+        "lifestyleAlignmentScore": 100,
         "preferenceFulfillmentScore": 71,
         "simulationInteractionScore": 83,
         "complementaryBonus": 1
@@ -28924,9 +29274,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Sydney, Australia.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.058Z"
+      "calculatedAt": "2026-10-11T07:16:03.109Z"
     },
     "person-mkbhd:person-andrewng": {
       "subjectId": "person-mkbhd",
@@ -28935,7 +29285,7 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 65,
+      "mutualCompatibility": 63,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
@@ -28961,9 +29311,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Palo Alto, California, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.064Z"
+      "calculatedAt": "2026-10-11T07:16:03.123Z"
     },
     "person-mkbhd:person-lexfridman": {
       "subjectId": "person-mkbhd",
@@ -28972,7 +29322,7 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 64,
+      "mutualCompatibility": 62,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
@@ -28998,9 +29348,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Austin, Texas, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.069Z"
+      "calculatedAt": "2026-10-11T07:16:03.131Z"
     },
     "person-mkbhd:person-reidhoffman": {
       "subjectId": "person-mkbhd",
@@ -29009,11 +29359,11 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 64,
+      "mutualCompatibility": 62,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
-        "lifestyleAlignmentScore": 90,
+        "lifestyleAlignmentScore": 82,
         "preferenceFulfillmentScore": 71,
         "simulationInteractionScore": 82,
         "complementaryBonus": 1
@@ -29035,9 +29385,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Mountain View, California, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.077Z"
+      "calculatedAt": "2026-10-11T07:16:03.139Z"
     },
     "person-mkbhd:person-reshmasaujani": {
       "subjectId": "person-mkbhd",
@@ -29046,11 +29396,11 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 64,
+      "mutualCompatibility": 62,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
-        "lifestyleAlignmentScore": 90,
+        "lifestyleAlignmentScore": 82,
         "preferenceFulfillmentScore": 71,
         "simulationInteractionScore": 82,
         "complementaryBonus": 1
@@ -29072,9 +29422,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. New York City, New York, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.083Z"
+      "calculatedAt": "2026-10-11T07:16:03.144Z"
     },
     "person-mkbhd:person-padmasree": {
       "subjectId": "person-mkbhd",
@@ -29083,11 +29433,11 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 65,
+      "mutualCompatibility": 63,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
-        "lifestyleAlignmentScore": 100,
+        "lifestyleAlignmentScore": 92,
         "preferenceFulfillmentScore": 71,
         "simulationInteractionScore": 83,
         "complementaryBonus": 1
@@ -29109,9 +29459,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Palo Alto, California, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.088Z"
+      "calculatedAt": "2026-10-11T07:16:03.153Z"
     },
     "person-mkbhd:person-annewojcicki": {
       "subjectId": "person-mkbhd",
@@ -29120,11 +29470,11 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 64,
+      "mutualCompatibility": 62,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
-        "lifestyleAlignmentScore": 82,
+        "lifestyleAlignmentScore": 90,
         "preferenceFulfillmentScore": 71,
         "simulationInteractionScore": 82,
         "complementaryBonus": 1
@@ -29146,9 +29496,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Palo Alto, California, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.095Z"
+      "calculatedAt": "2026-10-11T07:16:03.161Z"
     },
     "person-mkbhd:person-kimberlybryant": {
       "subjectId": "person-mkbhd",
@@ -29157,11 +29507,11 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 64,
+      "mutualCompatibility": 62,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
-        "lifestyleAlignmentScore": 82,
+        "lifestyleAlignmentScore": 90,
         "preferenceFulfillmentScore": 71,
         "simulationInteractionScore": 82,
         "complementaryBonus": 1
@@ -29183,9 +29533,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Memphis, Tennessee & San Francisco, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.104Z"
+      "calculatedAt": "2026-10-11T07:16:03.171Z"
     },
     "person-mkbhd:person-ijustine": {
       "subjectId": "person-mkbhd",
@@ -29194,11 +29544,11 @@
         "subjectToCandidate": 81,
         "candidateToSubject": 81
       },
-      "mutualCompatibility": 74,
+      "mutualCompatibility": 72,
       "signalBreakdown": {
-        "sharedInterestsScore": 55,
+        "sharedInterestsScore": 58,
         "sharedHobbiesScore": 15,
-        "lifestyleAlignmentScore": 82,
+        "lifestyleAlignmentScore": 90,
         "preferenceFulfillmentScore": 81,
         "simulationInteractionScore": 85,
         "complementaryBonus": 1
@@ -29223,9 +29573,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Los Angeles, California, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.110Z"
+      "calculatedAt": "2026-10-11T07:16:03.178Z"
     },
     "person-mkbhd:person-linustech": {
       "subjectId": "person-mkbhd",
@@ -29234,11 +29584,11 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 64,
+      "mutualCompatibility": 62,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
-        "lifestyleAlignmentScore": 82,
+        "lifestyleAlignmentScore": 90,
         "preferenceFulfillmentScore": 71,
         "simulationInteractionScore": 82,
         "complementaryBonus": 1
@@ -29260,9 +29610,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Vancouver, British Columbia, Canada.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.114Z"
+      "calculatedAt": "2026-10-11T07:16:03.183Z"
     },
     "person-mkbhd:person-safiyanygaard": {
       "subjectId": "person-mkbhd",
@@ -29271,11 +29621,11 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 65,
+      "mutualCompatibility": 63,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
-        "lifestyleAlignmentScore": 100,
+        "lifestyleAlignmentScore": 92,
         "preferenceFulfillmentScore": 71,
         "simulationInteractionScore": 83,
         "complementaryBonus": 1
@@ -29297,9 +29647,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Raleigh, North Carolina, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.119Z"
+      "calculatedAt": "2026-10-11T07:16:03.189Z"
     },
     "person-mkbhd:person-alexisohanian": {
       "subjectId": "person-mkbhd",
@@ -29308,11 +29658,11 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 64,
+      "mutualCompatibility": 62,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
-        "lifestyleAlignmentScore": 82,
+        "lifestyleAlignmentScore": 90,
         "preferenceFulfillmentScore": 71,
         "simulationInteractionScore": 82,
         "complementaryBonus": 1
@@ -29334,9 +29684,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Miami, Florida, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.124Z"
+      "calculatedAt": "2026-10-11T07:16:03.195Z"
     },
     "person-mkbhd:person-timferriss": {
       "subjectId": "person-mkbhd",
@@ -29345,7 +29695,7 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 64,
+      "mutualCompatibility": 62,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
@@ -29371,9 +29721,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Austin, Texas, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.128Z"
+      "calculatedAt": "2026-10-11T07:16:03.204Z"
     },
     "person-mkbhd:person-kevinrose": {
       "subjectId": "person-mkbhd",
@@ -29382,11 +29732,11 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 64,
+      "mutualCompatibility": 62,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
-        "lifestyleAlignmentScore": 90,
+        "lifestyleAlignmentScore": 82,
         "preferenceFulfillmentScore": 71,
         "simulationInteractionScore": 82,
         "complementaryBonus": 1
@@ -29408,9 +29758,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Portland, Oregon, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.133Z"
+      "calculatedAt": "2026-10-11T07:16:03.213Z"
     },
     "person-mkbhd:person-austinevans": {
       "subjectId": "person-mkbhd",
@@ -29419,11 +29769,11 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 64,
+      "mutualCompatibility": 62,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
-        "lifestyleAlignmentScore": 82,
+        "lifestyleAlignmentScore": 90,
         "preferenceFulfillmentScore": 71,
         "simulationInteractionScore": 82,
         "complementaryBonus": 1
@@ -29445,9 +29795,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Los Angeles, California, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.137Z"
+      "calculatedAt": "2026-10-11T07:16:03.219Z"
     },
     "person-mkbhd:person-mrwhosetheboss": {
       "subjectId": "person-mkbhd",
@@ -29456,11 +29806,11 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 64,
+      "mutualCompatibility": 62,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
-        "lifestyleAlignmentScore": 90,
+        "lifestyleAlignmentScore": 82,
         "preferenceFulfillmentScore": 71,
         "simulationInteractionScore": 82,
         "complementaryBonus": 1
@@ -29482,9 +29832,9 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. London, United Kingdom.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.142Z"
+      "calculatedAt": "2026-10-11T07:16:03.225Z"
     },
     "person-mkbhd:person-colinrosenblum": {
       "subjectId": "person-mkbhd",
@@ -29493,11 +29843,11 @@
         "subjectToCandidate": 71,
         "candidateToSubject": 71
       },
-      "mutualCompatibility": 65,
+      "mutualCompatibility": 63,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
         "sharedHobbiesScore": 15,
-        "lifestyleAlignmentScore": 100,
+        "lifestyleAlignmentScore": 92,
         "preferenceFulfillmentScore": 71,
         "simulationInteractionScore": 83,
         "complementaryBonus": 1
@@ -29519,23 +29869,23 @@
         "Geographic coordination: Kearny, New Jersey, USA vs. Los Angeles, California, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.147Z"
+      "calculatedAt": "2026-10-11T07:16:03.234Z"
     },
     "person-mkbhd:person-samirchaudry": {
       "subjectId": "person-mkbhd",
       "candidateId": "person-samirchaudry",
       "directionalCompatibility": {
-        "subjectToCandidate": 75,
-        "candidateToSubject": 75
+        "subjectToCandidate": 71,
+        "candidateToSubject": 71
       },
-      "mutualCompatibility": 70,
+      "mutualCompatibility": 63,
       "signalBreakdown": {
         "sharedInterestsScore": 10,
-        "sharedHobbiesScore": 60,
-        "lifestyleAlignmentScore": 100,
-        "preferenceFulfillmentScore": 75,
+        "sharedHobbiesScore": 15,
+        "lifestyleAlignmentScore": 92,
+        "preferenceFulfillmentScore": 71,
         "simulationInteractionScore": 83,
         "complementaryBonus": 1
       },
@@ -29547,21 +29897,18 @@
         "simulation": 0.6
       },
       "sharedInterestsList": [],
-      "sharedHobbiesList": [
-        "Drone Cinematography"
-      ],
+      "sharedHobbiesList": [],
       "evidenceStatements": [
         "Simulated Date Verdict (83% Chemistry): \"A deeply engaging, authentic first meeting between Marques Brownlee and Samir Chaudry. Their dialogue revealed mutual admiration for craftsmanship, shared alignment around the craft of building things, and effortless conversational chemistry.\"",
-        "Standout Moment: Spontaneous synthesis discussing the craft of building things and disciplined personal routines",
-        "Shared leisure affinity in Drone Cinematography."
+        "Standout Moment: Spontaneous synthesis discussing the craft of building things and disciplined personal routines"
       ],
       "riskOrFrictionNotice": [
         "Geographic coordination: Kearny, New Jersey, USA vs. Los Angeles, California, USA.",
         "Date observation: Demanding production calendars and geographic travel will require deliberate scheduling coordination"
       ],
-      "missingDataPenalty": 3,
+      "missingDataPenalty": 5,
       "disclaimer": "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.",
-      "calculatedAt": "2026-10-11T06:45:30.153Z"
+      "calculatedAt": "2026-10-11T07:16:03.241Z"
     }
   }
 }
