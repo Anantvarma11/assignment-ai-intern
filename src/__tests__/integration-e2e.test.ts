@@ -42,10 +42,10 @@ describe("End-to-End Integration Workflow", () => {
     expect(agent.analysis.personName).toBe("Geoffrey Hinton");
 
     // 3. Select a partner and run an actual dating simulation
-    const feifei = db.getPersonById("person-feifei-li")!;
-    expect(feifei).toBeDefined();
+    const partner = db.getPeople().find((p) => p.id !== newPerson.id)!;
+    expect(partner).toBeDefined();
 
-    const simulation = await runDatingSimulation(newPerson, feifei, { turnsCount: 6, forceFresh: true });
+    const simulation = await runDatingSimulation(newPerson, partner, { turnsCount: 6, forceFresh: true });
 
     // 4. Verify stored simulation transcript and evaluation
     expect(simulation.turns.length).toBe(6);
@@ -54,7 +54,7 @@ describe("End-to-End Integration Workflow", () => {
     expect(storedSim).not.toBeNull();
 
     // 5. Calculate compatibility score using the real simulation result
-    const match = calculateCompatibility(newPerson, feifei, simulation);
+    const match = calculateCompatibility(newPerson, partner, simulation);
     expect(match.mutualCompatibility).toBeGreaterThanOrEqual(50);
     expect(match.signalBreakdown.simulationInteractionScore).toBe(simulation.evaluation.overallSimulationScore);
     expect(match.evidenceStatements.length).toBeGreaterThan(0);

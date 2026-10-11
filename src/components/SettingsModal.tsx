@@ -13,6 +13,7 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const [status, setStatus] = useState<ProviderStatusInfo | null>(null);
   const [cerebrasKeyInput, setCerebrasKeyInput] = useState("");
   const [openrouterKeyInput, setOpenrouterKeyInput] = useState("");
+  const [apifyTokenInput, setApifyTokenInput] = useState("");
   const [forcedMode, setForcedMode] = useState<"auto" | "cerebras" | "openrouter" | "deterministic">("auto");
   const [saving, setSaving] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
@@ -45,6 +46,7 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       const payload: any = {};
       if (cerebrasKeyInput.trim()) payload.cerebrasKey = cerebrasKeyInput.trim();
       if (openrouterKeyInput.trim()) payload.openrouterKey = openrouterKeyInput.trim();
+      if (apifyTokenInput.trim()) payload.apifyToken = apifyTokenInput.trim();
 
       if (forcedMode === "auto") {
         payload.forcedProvider = null;
@@ -61,9 +63,10 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       const json = await res.json();
       if (json.success) {
         setStatus(json.data);
-        setNotice("Provider configuration updated successfully.");
+        setNotice("Configuration updated successfully.");
         setCerebrasKeyInput("");
         setOpenrouterKeyInput("");
+        setApifyTokenInput("");
       } else {
         setNotice(`Error: ${json.error}`);
       }
@@ -199,6 +202,22 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
               onChange={(e) => setOpenrouterKeyInput(e.target.value)}
               className="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs focus:outline-none focus:border-[#D4AF37]"
             />
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-slate-300 mb-1">
+              Optional Apify API Token (for Live Actor Scrapes)
+            </label>
+            <input
+              type="password"
+              placeholder="apify_api_... (Actor: FcwQfZYY4FHN6baby)"
+              value={apifyTokenInput}
+              onChange={(e) => setApifyTokenInput(e.target.value)}
+              className="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs focus:outline-none focus:border-[#D4AF37]"
+            />
+            <p className="text-[11px] text-slate-400 mt-1">
+              Power live profile extraction. If omitted, uses the high-fidelity snapshot cache.
+            </p>
           </div>
         </div>
 

@@ -13,6 +13,7 @@ import {
   CheckCircle2,
   ArrowRightLeft,
   ExternalLink,
+  LayoutGrid,
 } from "lucide-react";
 
 function RankingsContent() {
@@ -76,9 +77,17 @@ function RankingsContent() {
             </h1>
           </div>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Directional and mutual compatibility calculated across all 25+ real individuals with grounded evidence.
+            Directional and mutual compatibility calculated across all 26 real creators with grounded evidence.
           </p>
         </div>
+
+        <Link
+          href="/heatmap"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-[#D4AF37]/40 text-[#F3E5AB] text-xs font-bold transition-all shadow-sm"
+        >
+          <LayoutGrid className="w-3.5 h-3.5 text-[#D4AF37]" />
+          View 26×26 Heatmap Matrix
+        </Link>
       </div>
 
       {/* Subject Picker Card */}

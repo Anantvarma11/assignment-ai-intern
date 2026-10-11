@@ -3,14 +3,14 @@ import { calculateCompatibility, ETHICS_DISCLAIMER } from "@/lib/matching/scorer
 import { SEED_PEOPLE } from "@/lib/data/seed-people";
 
 describe("Matching & Compatibility Scoring", () => {
-  const satya = SEED_PEOPLE.find((p) => p.name === "Satya Nadella")!;
-  const feifei = SEED_PEOPLE.find((p) => p.name.includes("Fei-Fei Li"))!;
+  const personA = SEED_PEOPLE[0];
+  const personB = SEED_PEOPLE[1];
 
   it("calculates directional and mutual compatibility with explicit signal breakdown", () => {
-    const match = calculateCompatibility(satya, feifei);
+    const match = calculateCompatibility(personA, personB);
 
-    expect(match.subjectId).toBe(satya.id);
-    expect(match.candidateId).toBe(feifei.id);
+    expect(match.subjectId).toBe(personA.id);
+    expect(match.candidateId).toBe(personB.id);
     expect(match.mutualCompatibility).toBeGreaterThanOrEqual(40);
     expect(match.mutualCompatibility).toBeLessThanOrEqual(100);
 
@@ -27,18 +27,18 @@ describe("Matching & Compatibility Scoring", () => {
 
   it("penalizes matches when missing data is present", () => {
     const incompletePerson = {
-      ...feifei,
+      ...personB,
       id: "incomplete-person-test",
       missingInformation: ["Routine schedule", "Dietary habits", "Travel availability", "Music taste"],
     };
 
-    const normalMatch = calculateCompatibility(satya, feifei);
-    const incompleteMatch = calculateCompatibility(satya, incompletePerson);
+    const normalMatch = calculateCompatibility(personA, personB);
+    const incompleteMatch = calculateCompatibility(personA, incompletePerson);
 
     expect(incompleteMatch.missingDataPenalty).toBeGreaterThan(normalMatch.missingDataPenalty);
   });
 
   it("prevents calculating compatibility with oneself", () => {
-    expect(() => calculateCompatibility(satya, satya)).toThrow("Cannot calculate compatibility with oneself.");
+    expect(() => calculateCompatibility(personA, personA)).toThrow("Cannot calculate compatibility with oneself.");
   });
 });

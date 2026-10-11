@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Users, HeartHandshake, BookOpen, Trophy, UserPlus, Home, Sparkles } from "lucide-react";
+import { Users, HeartHandshake, BookOpen, Trophy, UserPlus, Home, Sparkles, LayoutGrid } from "lucide-react";
 import { ProviderBadge } from "./ProviderBadge";
 import { SettingsModal } from "./SettingsModal";
 
@@ -17,7 +17,8 @@ export function Navigation() {
     { href: "/simulate", label: "Simulate Date", icon: HeartHandshake },
     { href: "/transcripts", label: "Transcripts", icon: BookOpen },
     { href: "/rankings", label: "Rankings", icon: Trophy },
-    { href: "/add", label: "Add Person", icon: UserPlus },
+    { href: "/heatmap", label: "Heatmap", icon: LayoutGrid },
+    { href: "/add", label: "Ingest URLs", icon: UserPlus },
   ];
 
   return (

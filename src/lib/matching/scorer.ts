@@ -9,31 +9,37 @@ export interface ScoringWeights {
   simulation: number;
 }
 
-export const DEFAULT_WEIGHTS: ScoringWeights = {
-  interests: 0.25,
-  hobbies: 0.15,
-  lifestyle: 0.20,
-  preferences: 0.20,
-  simulation: 0.20,
+/**
+ * Scorecard-Dominant Weighting:
+ * Actual agent-to-agent simulated date chemistry and mutual scorecard dominates with 60% weight.
+ * Static profile overlaps provide a 40% foundation.
+ */
+export const SCORECARD_DOMINANT_WEIGHTS: ScoringWeights = {
+  simulation: 0.60,
+  interests: 0.15,
+  hobbies: 0.10,
+  preferences: 0.10,
+  lifestyle: 0.05,
 };
 
 export const ETHICS_DISCLAIMER =
-  "Exploratory algorithmic signal based on public professional and personal profile evidence and agent interaction. Not a scientific predictor of romantic success.";
+  "Exploratory algorithmic signal grounded in public professional and personal evidence and simulated agent-to-agent interaction. Not a scientific predictor of romantic success.";
 
 /**
- * Calculates directional and mutual compatibility between two people.
+ * Calculates directional and mutual compatibility between two people,
+ * with the post-date scorecard dominating the final mutual score.
  */
 export function calculateCompatibility(
   subject: Person,
   candidate: Person,
   simulation?: DatingSimulation | null,
-  weights: ScoringWeights = DEFAULT_WEIGHTS
+  weights: ScoringWeights = SCORECARD_DOMINANT_WEIGHTS
 ): CompatibilityMatch {
   if (subject.id === candidate.id) {
     throw new Error("Cannot calculate compatibility with oneself.");
   }
 
-  // 1. Shared interests calculation (Jaccard + substring overlap)
+  // 1. Shared interests calculation
   const subjectInterests = subject.interests.map((i) => i.toLowerCase().trim());
   const candidateInterests = candidate.interests.map((i) => i.toLowerCase().trim());
 
@@ -63,9 +69,9 @@ export function calculateCompatibility(
   );
 
   // 3. Lifestyle and communication alignment
-  let lifestyleScore = 60;
+  let lifestyleScore = 65;
   if (subject.compatibilitySignals.ambitionAlignment === candidate.compatibilitySignals.ambitionAlignment) {
-    lifestyleScore += 12;
+    lifestyleScore += 10;
   }
   if (subject.compatibilitySignals.socialBattery === candidate.compatibilitySignals.socialBattery) {
     lifestyleScore += 10;
@@ -74,7 +80,7 @@ export function calculateCompatibility(
     lifestyleScore += 8;
   }
   if (subject.explicitPreferences.relationshipIntent === candidate.explicitPreferences.relationshipIntent) {
-    lifestyleScore += 10;
+    lifestyleScore += 7;
   }
   const lifestyleAlignmentScore = Math.min(100, lifestyleScore);
 
@@ -90,9 +96,8 @@ export function calculateCompatibility(
   }
   if (sharedInterestsList.length > 0) sToC += 15;
   if (sharedHobbiesList.length > 0) sToC += 10;
-  sToC = Math.min(99, Math.max(25, sToC));
 
-  // Directional preference fulfillment: Candidate -> Subject
+  // 5. Directional preference fulfillment: Candidate -> Subject
   let cToS = 65;
   const cDealbreakers = candidate.explicitPreferences.dealbreakers.map((d) => d.toLowerCase());
   let cDealbreakerHit = false;
@@ -104,79 +109,71 @@ export function calculateCompatibility(
   }
   if (sharedInterestsList.length > 0) cToS += 15;
   if (sharedHobbiesList.length > 0) cToS += 10;
-  cToS = Math.min(99, Math.max(25, cToS));
 
-  const preferenceFulfillmentScore = Math.round((sToC + cToS) / 2);
-
-  // 5. Simulation interaction score
-  let simulationScore = 70;
+  // 6. Simulation interaction score (DOMINANT SIGNAL - 60%)
+  let simulationInteractionScore = 70;
   let hasLiveSimulation = false;
-  if (simulation && simulation.evaluation) {
-    simulationScore = simulation.evaluation.overallSimulationScore;
-    hasLiveSimulation = true;
-  } else {
-    // Baseline projected interaction
-    simulationScore = Math.round((sharedInterestsScore * 0.4 + lifestyleAlignmentScore * 0.6) * 0.9);
-  }
-  const simulationInteractionScore = Math.min(100, Math.max(40, simulationScore));
+  let secondDateMultiplier = 1.0;
 
-  // 6. Complementary bonus
-  let complementaryBonus = 0;
-  if (
-    subject.compatibilitySignals.socialBattery === "introvert" &&
-    candidate.compatibilitySignals.socialBattery === "extrovert"
-  ) {
-    complementaryBonus += 4;
+  if (simulation && simulation.evaluation) {
+    hasLiveSimulation = true;
+    const simEval = simulation.evaluation;
+    simulationInteractionScore = simEval.overallSimulationScore;
+
+    // Second date likelihood bonus/adjustment
+    if (simEval.secondDateLikelihood === "very_high") secondDateMultiplier = 1.08;
+    else if (simEval.secondDateLikelihood === "high") secondDateMultiplier = 1.02;
+    else if (simEval.secondDateLikelihood === "moderate") secondDateMultiplier = 0.95;
+    else if (simEval.secondDateLikelihood === "unlikely") secondDateMultiplier = 0.85;
+
+    // Blend date chemistry into directional scores
+    sToC = Math.round(sToC * 0.4 + simEval.chemistryScore * 0.6);
+    cToS = Math.round(cToS * 0.4 + simEval.chemistryScore * 0.6);
+  } else {
+    // Project based on baseline
+    simulationInteractionScore = Math.round((sharedInterestsScore * 0.5 + lifestyleAlignmentScore * 0.5) * 0.88);
   }
-  if (
-    subject.compatibilitySignals.spontaneityLevel === "low" &&
-    candidate.compatibilitySignals.spontaneityLevel === "high"
-  ) {
-    complementaryBonus += 3;
-  }
+
+  sToC = Math.min(99, Math.max(25, sToC));
+  cToS = Math.min(99, Math.max(25, cToS));
+  const preferenceFulfillmentScore = Math.round((sToC + cToS) / 2);
 
   // 7. Missing data penalty
   const totalMissing = subject.missingInformation.length + candidate.missingInformation.length;
-  const missingDataPenalty = Math.min(12, Math.round(totalMissing * 1.5));
+  const missingDataPenalty = Math.min(10, Math.round(totalMissing * 1.5));
 
   // 8. Mutual compatibility composition
-  // Harmonic mean of directional scores to prevent high one-sided bias
   const harmonicMean = (2 * sToC * cToS) / (sToC + cToS);
 
   const weightedBase =
+    simulationInteractionScore * weights.simulation +
     sharedInterestsScore * weights.interests +
     sharedHobbiesScore * weights.hobbies +
-    lifestyleAlignmentScore * weights.lifestyle +
     preferenceFulfillmentScore * weights.preferences +
-    simulationInteractionScore * weights.simulation;
+    lifestyleAlignmentScore * weights.lifestyle;
 
-  let finalMutual = Math.round(weightedBase * 0.65 + harmonicMean * 0.35 + complementaryBonus - missingDataPenalty);
-  finalMutual = Math.min(98, Math.max(30, finalMutual));
+  let finalMutual = Math.round((weightedBase * 0.7 + harmonicMean * 0.3) * secondDateMultiplier - missingDataPenalty);
+  finalMutual = Math.min(99, Math.max(30, finalMutual));
 
   // Evidence generation
   const evidenceStatements: string[] = [];
-  if (sharedInterestsList.length > 0) {
-    evidenceStatements.push(`Mutual focus on ${sharedInterestsList.join(", ")} identified in public profiles.`);
-  } else {
+  if (hasLiveSimulation && simulation) {
     evidenceStatements.push(
-      `Cross-domain complementary strengths between ${subject.role} and ${candidate.role}.`
+      `Simulated Date Verdict (${simulation.evaluation.overallSimulationScore}% Chemistry): "${simulation.evaluation.narrativeSummary}"`
     );
+    if (simulation.evaluation.standoutMoments.length > 0) {
+      evidenceStatements.push(`Standout Moment: ${simulation.evaluation.standoutMoments[0]}`);
+    }
+  } else {
+    evidenceStatements.push("Speed-date simulation pending full transcript recording.");
+  }
+
+  if (sharedInterestsList.length > 0) {
+    evidenceStatements.push(`Mutual focus on ${sharedInterestsList.join(", ")} identified in public evidence.`);
   }
 
   if (sharedHobbiesList.length > 0) {
     evidenceStatements.push(`Shared leisure affinity in ${sharedHobbiesList.join(", ")}.`);
-  }
-
-  evidenceStatements.push(
-    `Mutual relationship intent alignment: Both seeking "${subject.explicitPreferences.relationshipIntent}".`
-  );
-
-  if (hasLiveSimulation) {
-    evidenceStatements.push(
-      `Direct simulation observation: ${simulation?.evaluation.narrativeSummary || "Dynamic interaction recorded."}`
-    );
-  } else {
-    evidenceStatements.push("Projected interaction pending full live date simulation.");
   }
 
   // Friction alerts
@@ -185,12 +182,10 @@ export function calculateCompatibility(
     riskOrFrictionNotice.push("Potential friction regarding stated dealbreaker criteria.");
   }
   if (subject.location !== candidate.location) {
-    riskOrFrictionNotice.push(`Geographic distance: ${subject.location} vs. ${candidate.location}.`);
+    riskOrFrictionNotice.push(`Geographic coordination: ${subject.location} vs. ${candidate.location}.`);
   }
-  if (missingDataPenalty > 0) {
-    riskOrFrictionNotice.push(
-      `Confidence adjusted for ${totalMissing} unverified or missing profile attributes.`
-    );
+  if (hasLiveSimulation && simulation?.evaluation.potentialFrictionPoints?.length) {
+    riskOrFrictionNotice.push(`Date observation: ${simulation.evaluation.potentialFrictionPoints[0]}`);
   }
 
   const match: CompatibilityMatch = {
@@ -207,7 +202,7 @@ export function calculateCompatibility(
       lifestyleAlignmentScore,
       preferenceFulfillmentScore,
       simulationInteractionScore,
-      complementaryBonus,
+      complementaryBonus: Math.round((secondDateMultiplier - 1) * 50),
     },
     weightsUsed: weights,
     sharedInterestsList,
@@ -227,7 +222,7 @@ export function calculateCompatibility(
  */
 export async function getPersonalizedRankings(
   subjectId: string,
-  limit: number = 25
+  limit: number = 26
 ): Promise<Array<{ candidate: Person; match: CompatibilityMatch; simulation: DatingSimulation | null }>> {
   const subject = db.getPersonById(subjectId);
   if (!subject) {
@@ -254,4 +249,46 @@ export async function getPersonalizedRankings(
   results.sort((a, b) => b.match.mutualCompatibility - a.match.mutualCompatibility);
 
   return results.slice(0, limit);
+}
+
+/**
+ * Generates full 26x26 compatibility matrix for heatmap visualization.
+ */
+export function getCompatibilityMatrix(): {
+  people: Array<{ id: string; name: string; handle: string; avatarUrl: string }>;
+  matrix: Array<{
+    idA: string;
+    idB: string;
+    score: number;
+    hasSimulation: boolean;
+  }>;
+} {
+  const people = db.getPeople();
+  const matrix: Array<{ idA: string; idB: string; score: number; hasSimulation: boolean }> = [];
+
+  for (let i = 0; i < people.length; i++) {
+    for (let j = 0; j < people.length; j++) {
+      if (i === j) continue;
+      const pA = people[i];
+      const pB = people[j];
+      const sim = db.findSimulationForPair(pA.id, pB.id);
+      const match = calculateCompatibility(pA, pB, sim);
+      matrix.push({
+        idA: pA.id,
+        idB: pB.id,
+        score: match.mutualCompatibility,
+        hasSimulation: !!sim,
+      });
+    }
+  }
+
+  return {
+    people: people.map((p) => ({
+      id: p.id,
+      name: p.name,
+      handle: p.handle,
+      avatarUrl: p.avatarUrl,
+    })),
+    matrix,
+  };
 }

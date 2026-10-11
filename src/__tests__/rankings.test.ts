@@ -4,10 +4,10 @@ import { SEED_PEOPLE } from "@/lib/data/seed-people";
 import { db } from "@/lib/storage/store";
 
 describe("Personalized Rankings Generation", () => {
-  const satya = SEED_PEOPLE.find((p) => p.name === "Satya Nadella")!;
+  const subject = SEED_PEOPLE[0];
 
   it("generates sorted personalized rankings for a given individual", async () => {
-    const rankings = await getPersonalizedRankings(satya.id);
+    const rankings = await getPersonalizedRankings(subject.id);
 
     expect(rankings.length).toBeGreaterThanOrEqual(24); // Against all other candidates
 

@@ -20,6 +20,7 @@ export async function POST(request: Request) {
       setRuntimeKeys({
         cerebrasKey: body.cerebrasKey,
         openrouterKey: body.openrouterKey,
+        apifyToken: body.apifyToken,
         forcedProvider: body.forcedProvider,
       });
     }
