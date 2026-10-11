@@ -1,0 +1,89 @@
+{
+  "urlHash": "68ed7372e7a9616a",
+  "scrapedAt": "2026-10-11T07:44:13.213Z",
+  "source": "apify_live",
+  "linkedIn": {
+    "url": "https://www.linkedin.com/in/williamhgates",
+    "fullName": "Bill Gates",
+    "headline": "Chair, Gates Foundation and Founder, Breakthrough Energy",
+    "location": "Seattle, Washington, United States",
+    "about": "Chair of the Gates Foundation. Founder of Breakthrough Energy. Co-founder of Microsoft. Voracious reader. Avid traveler. Active blogger.",
+    "avatarUrl": "https://media.licdn.com/dms/image/v2/D5603AQF-RYZP55jmXA/profile-displayphoto-shrink_800_800/B56ZRi8g.aGsAc-/0/1736826818808?e=1793232000&v=beta&t=h84Ee-2NucG0tJjTkgWGFHOtQD4ICX0mrcRqdTWoQzM",
+    "company": "Gates Foundation",
+    "role": "Co-chair",
+    "experiences": [
+      {
+        "title": "Co-chair",
+        "company": "Gates Foundation",
+        "startDate": "2000",
+        "endDate": "Present"
+      },
+      {
+        "title": "Founder",
+        "company": "Breakthrough Energy ",
+        "startDate": "2015",
+        "endDate": "Present"
+      },
+      {
+        "title": "Co-founder",
+        "company": "Microsoft",
+        "startDate": "1975",
+        "endDate": "Present"
+      }
+    ],
+    "skills": [],
+    "scrapedAt": "2026-10-11T07:44:13.213Z"
+  },
+  "instagram": {
+    "url": "https://www.instagram.com/thisisbillgates",
+    "username": "thisisbillgates",
+    "fullName": "Bill Gates",
+    "biography": "Sharing things I'm learning through my foundation work and other interests.",
+    "externalUrl": "https://gatesnot.es/AI",
+    "profilePicUrl": "https://instagram.fjdo10-2.fna.fbcdn.net/v/t51.2885-19/473716533_1775393106650451_1071002921276479463_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fjdo10-2.fna.fbcdn.net&_nc_cat=1&_nc_oc=Q6cZ2gHwWN3SSw45scVKWYBShQ_FRQEf1kY-1ke-vxi3wvawnjsh206BQ_LjuE0VJlIU7up8RcA0XJpck7xhTol7zz4W&_nc_ohc=T4dXlt8Z7MkQ7kNvwEkUfR1&_nc_gid=WOv1qd98eSy5sdviwTdYuw&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AQNmQlSBP_SiJkh97wvnnW_7KDrTsO8Zx9TPkD_N3hgg_w&oe=6AD11CC2&_nc_sid=8b3546",
+    "postsCount": 633,
+    "followersCount": 12038094,
+    "recentPosts": [
+      {
+        "id": "ig:post:1",
+        "caption": "With this relatively simple solution, aviation could massively cut its climate impact.",
+        "hashtags": [],
+        "timestamp": "2026-10-08T21:26:30.000Z",
+        "likesCount": 4656
+      },
+      {
+        "id": "ig:post:2",
+        "caption": "Dr. Firdausi Qadri is helping make cholera a thing of the past.",
+        "hashtags": [],
+        "timestamp": "2026-10-06T19:20:23.000Z",
+        "likesCount": 1504
+      },
+      {
+        "id": "ig:post:3",
+        "caption": "This innovation transformed medicine forever—and probably saved your life at one point.",
+        "hashtags": [],
+        "timestamp": "2026-10-05T03:22:41.000Z",
+        "likesCount": 2427
+      },
+      {
+        "id": "ig:post:4",
+        "caption": "The week I spend in New York for #Goalkeepers2030 and the UN General Assembly is always a highlight of my year. Last week was no exception.",
+        "hashtags": [
+          "Goalkeepers2030"
+        ],
+        "timestamp": "2026-09-30T20:26:06.000Z",
+        "likesCount": 4894
+      },
+      {
+        "id": "ig:post:5",
+        "caption": "At #Goalkeepers2030, I spoke with Archbishop Vicenzo Paglia about how people and relationships must remain at the center of how we use AI.",
+        "hashtags": [
+          "Goalkeepers2030,"
+        ],
+        "timestamp": "2026-09-29T19:07:12.000Z",
+        "likesCount": 5322
+      }
+    ],
+    "scrapedAt": "2026-10-11T07:44:13.213Z"
+  }
+}

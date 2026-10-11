@@ -1,7 +1,8 @@
 import fs from "fs";
 import path from "path";
 import { Person } from "@/lib/types";
-import { SEED_PEOPLE } from "./seed-people";
+import { loadAllSnapshots } from "@/lib/ingestion/cache";
+import { runCriticPass } from "@/lib/ingestion/critic";
 
 export interface VolunteerRecord {
   name: string;
@@ -25,10 +26,10 @@ export function loadConsentingVolunteers(): {
   if (!fs.existsSync(csvPath)) {
     return {
       volunteers: [],
-      people: SEED_PEOPLE,
-      count: SEED_PEOPLE.length,
-      hasMinimum25: SEED_PEOPLE.length >= 25,
-      message: "data/volunteers.csv not found; falling back to seed roster.",
+      people: [],
+      count: 0,
+      hasMinimum25: false,
+      message: "data/volunteers.csv not found.",
     };
   }
 
@@ -58,7 +59,7 @@ export function loadConsentingVolunteers(): {
     const name = parts[nameIdx] || "";
     const li = parts[liIdx] || "";
     const ig = parts[igIdx] || "";
-    const consent = parts[consentIdx]?.toLowerCase() === "yes";
+    const consent = ["yes", "public-figure"].includes(parts[consentIdx]?.toLowerCase());
 
     if (name && consent) {
       volunteers.push({
@@ -70,18 +71,15 @@ export function loadConsentingVolunteers(): {
     }
   }
 
-  // Map to matching Person profiles from SEED_PEOPLE
+  // Build each Person from its real scraped snapshot (Apify) through the critic pass
+  const snaps = loadAllSnapshots();
+  const slug = (u: string) => u.trim().toLowerCase().replace(/\/$/, "").split("/").pop();
   const people: Person[] = [];
   for (const v of volunteers) {
-    const match = SEED_PEOPLE.find(
-      (p) =>
-        p.name.toLowerCase() === v.name.toLowerCase() ||
-        p.linkedInUrl.toLowerCase() === v.linkedin_url.toLowerCase() ||
-        p.instagramUrl.toLowerCase() === v.instagram_url.toLowerCase()
+    const snap = snaps.find(
+      (x) => slug(x.linkedIn.url) === slug(v.linkedin_url) && slug(x.instagram.url) === slug(v.instagram_url)
     );
-    if (match) {
-      people.push(match);
-    }
+    if (snap) people.push(runCriticPass(snap).person);
   }
 
   const hasMinimum25 = people.length >= 25;

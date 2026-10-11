@@ -1,0 +1,104 @@
+{
+ "urlHash": "0f4ff34aed93daa9",
+ "scrapedAt": "2026-10-11T07:41:28.684Z",
+ "source": "apify_live",
+ "linkedIn": {
+  "url": "https://www.linkedin.com/in/austin-evans",
+  "fullName": "Austin Evans",
+  "headline": "I create world-class experiences for online brands.",
+  "location": "Auburn, Alabama, United States",
+  "about": "Nice to meet you! My name is Austin Evans, and I am a creative designer currently based in Huntsville, AL. I have worked in a variety of design fields, and led teams in the execution and creation of many bespoke client design projects. I love collaborating with other creatives in the pursuit of a larger vision, and the concept-to-reality process of taking an idea and bringing it to life. I am driven, motivated, and excited to start on our next project together!\n\nPortfolio - austin-evans-portfolio.webflow.io",
+  "avatarUrl": "https://media.licdn.com/dms/image/v2/C5603AQFtkmoGdfrmPQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1650778608583?e=1793232000&v=beta&t=Odx-c78TYcpJt_dfUn-MAryLGAHQmNMZAFPyK-nAWvI",
+  "company": "Holtz Leather Co.",
+  "role": "Senior Web Designer",
+  "experiences": [
+   {
+    "title": "Senior Web Designer",
+    "company": "Holtz Leather Co.",
+    "description": "Worked with marketing team to establish the most common customer journeys through the website, and optimized the flow from landing page all the way through checkout to improve conversion rate\n\nConducted regular website audits, implemented best practices for User Interface / User Experience, and established platform-native solutions to accomplish business goals without outsourcing functionality to third party apps or services\n\nDesigned and implemented new homepages, landing pages, product pages, and website sections that improved the appearance, flow, and usability of the site while maintaining a heavy focus on conversion rate\n\nImplemented advanced e-commerce functionalities across multiple company websites. These included customer reviews, cross-site navigation for all brands under the company umbrella, a higher converting email collection popup, and advanced email segmentation that maximized revenue during the Christmas season.\n\nWorked with corporate accounts department to establish corporate customer funnel pain points, and built new customer journeys on-site that addressed these pain points and made the customer journey easier, resulting in a higher conversion rate",
+    "startDate": "Sep 2022",
+    "endDate": "Mar 2024"
+   },
+   {
+    "title": "Senior Web Designer",
+    "company": "Arcane Media, LLC",
+    "description": "Worked with clients to establish scope of work and project outlines, then organized and distributed detailed objective plans to the team for the most effcient workload.\n\nUsed brand style guides to build beautiful, interactive website experiences that connect with the end user. Ensured these sites were lightweight, fast, and optimized for maximum conversions.\n\nUtilized product and promotional information to build conversion-focused landing pages, as well as complex upsell/downsell sequences to maximize each conversion for the highest Average Order Value possible.\n\nEstablished roadmaps for customer nurturing through Email and SMS platforms, then used these roadmaps to design Email and SMS creative and copy for multiple segmentation flows and campaigns to take customers from new purchasers to dedicated, raving fans.",
+    "startDate": "Dec 2020",
+    "endDate": "Oct 2021"
+   },
+   {
+    "title": "Product Designer",
+    "company": "Redline Steel®️",
+    "description": "Designed new home decor products for production using AutoCAD, Adobe Illustrator, & Solidworks. Prepared part files to be fully ready for production on CNC fiber laser machines.\n\nWorked with all departments to establish new Standard Operating Procedures for product movement throughout production facility, eliminating confusion and lost products.\n\nRefined automated, custom coded macro system to create customized monogram part files using order data, then implement those files into the product creation process using CNC Fiber Lasers.\n\nWorked as a videographer, using everything from drones to high end cinema cameras to film and edit videos for online brand pages as well as ads for social media.\n\nCreated and maintained creative optimization processes with Photoshop, Illustrator, and Solidworks. These processes were used to produce large amounts of creative assets (images, GIFs, video, etc.), as well as allow the production of customized monogram part files with customer names, dates, and address numbers.",
+    "startDate": "Nov 2018",
+    "endDate": "Dec 2020"
+   }
+  ],
+  "skills": [
+   "Responsive Web Design",
+   "E-commerce Optimization",
+   "User Experience (UX)",
+   "Online Marketing",
+   "HTML",
+   "Project Management",
+   "Microsoft Office",
+   "Management",
+   "Microsoft Excel",
+   "Microsoft Word",
+   "Leadership",
+   "Microsoft PowerPoint",
+   "Public Speaking",
+   "Smart Devices",
+   "Design"
+  ],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ },
+ "instagram": {
+  "url": "https://www.instagram.com/austinnotduncan",
+  "username": "austinnotduncan",
+  "fullName": "Austin Evans",
+  "biography": "makes slightly entertaining tech videos",
+  "externalUrl": "https://www.youtube.com/austinevans",
+  "profilePicUrl": "https://scontent-mel1-1.cdninstagram.com/v/t51.2885-19/387632932_735796121691862_3439126457423936663_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-mel1-1.cdninstagram.com&_nc_cat=110&_nc_oc=Q6cZ2gGm5NB3QAdVo40FRv8kakAT12P7xsltDR8ub-0d0kGIJoG_bVKYxOu3hK0utZg9HXI&_nc_ohc=hAevRIV8QWYQ7kNvwGtRLXN&_nc_gid=3hbiM2YTRbZ-6Cz2ZRF1Mw&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AQO_yDNVszXLDjut0gWJ0M1xQQjowzapSmFieW1ypFjFGw&oe=6AD11F94&_nc_sid=8b3546",
+  "postsCount": 1806,
+  "followersCount": 481153,
+  "recentPosts": [
+   {
+    "id": "ig:post:1",
+    "caption": "The Most SILENT Mechanical Keyboard I’ve Ever Tried",
+    "hashtags": [],
+    "timestamp": "2026-10-10T16:35:28.000Z",
+    "likesCount": 520
+   },
+   {
+    "id": "ig:post:2",
+    "caption": "Physical Games are Back(ish)",
+    "hashtags": [],
+    "timestamp": "2026-10-09T22:33:55.000Z",
+    "likesCount": 1453
+   },
+   {
+    "id": "ig:post:3",
+    "caption": "Magnetic USB-C on the Surface Laptop Ultra is AWESOME",
+    "hashtags": [],
+    "timestamp": "2026-10-07T22:28:28.000Z",
+    "likesCount": 1316
+   },
+   {
+    "id": "ig:post:4",
+    "caption": "The PS5 Pro is now $1400 🥲",
+    "hashtags": [],
+    "timestamp": "2026-10-06T20:04:45.000Z",
+    "likesCount": 1421
+   },
+   {
+    "id": "ig:post:5",
+    "caption": "Is the RAM Crisis Getting Worse?",
+    "hashtags": [],
+    "timestamp": "2026-10-06T16:39:01.000Z",
+    "likesCount": 1338
+   }
+  ],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ }
+}

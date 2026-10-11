@@ -66,66 +66,62 @@ export async function scrapeProfilesWithApify(
   const actorId = options.actorId || "FcwQfZYY4FHN6baby";
   const urlHash = computeUrlHash(linkedInUrl, instagramUrl);
 
-  // 1. Try Live Apify Actor Run if valid token is provided
+  // 1. Live scrape via two Apify actors: harvestapi LinkedIn profile scraper + apify Instagram profile scraper
   if (token && token.trim().length > 5) {
     try {
-      console.log(`[Apify Scraper] Running Actor ${actorId} for ${linkedInUrl} and ${instagramUrl}...`);
-
-      const runRes = await fetch(`https://api.apify.com/v2/acts/${actorId}/runs?token=${token}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          linkedinUrl: linkedInUrl,
-          instagramUrl: instagramUrl,
-          maxPosts: 5,
+      const callActor = async (actor: string, input: object) => {
+        const r = await fetch(
+          `https://api.apify.com/v2/acts/${actor}/run-sync-get-dataset-items?token=${token}`,
+          { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(input) }
+        );
+        return r.ok ? await r.json() : [];
+      };
+      const igUser = instagramUrl.trim().replace(/\/$/, "").split("/").pop() || "";
+      const [liItems, igItems] = await Promise.all([
+        callActor("harvestapi~linkedin-profile-scraper", {
+          urls: [linkedInUrl],
+          profileScraperMode: "Profile details no email ($4 per 1k)",
         }),
-      });
-
-      if (runRes.ok) {
-        const runData = await runRes.json();
-        const runId = runData?.data?.id;
-        const defaultDatasetId = runData?.data?.defaultDatasetId;
-
-        if (defaultDatasetId) {
-          // Poll briefly for results
-          await new Promise((r) => setTimeout(r, 3000));
-          const itemsRes = await fetch(
-            `https://api.apify.com/v2/datasets/${defaultDatasetId}/items?token=${token}`
-          );
-          if (itemsRes.ok) {
-            const items = await itemsRes.json();
-            if (Array.isArray(items) && items.length > 0) {
-              const item = items[0];
-              const parsedLi = item.linkedIn || parseRawLinkedIn(linkedInUrl, item);
-              const parsedIg = item.instagram || parseRawInstagram(instagramUrl, item);
-
-              const snapshotPath = saveSnapshotToDisk(urlHash, {
-                urlHash,
-                scrapedAt: new Date().toISOString(),
-                source: "apify_live",
-                actorId,
-                actorRunId: runId,
-                linkedIn: parsedLi,
-                instagram: parsedIg,
-              });
-
-              return {
-                linkedIn: parsedLi,
-                instagram: parsedIg,
-                source: "apify_live",
-                actorRunId: runId,
-                urlHash,
-                isCachedSnapshot: false,
-                snapshotPath,
-              };
-            }
-          }
+        callActor("apify~instagram-profile-scraper", { usernames: [igUser], resultsLimit: 5 }),
+      ]);
+      const L = Array.isArray(liItems) ? liItems.find((x: any) => x.firstName) : null;
+      const I = Array.isArray(igItems) ? igItems.find((x: any) => x.username && !x.error) : null;
+      if (L && I) {
+        if (I.private) {
+          throw new ProfileScrapeError("Instagram profile is private; only public profiles are allowed.", "IG_PRIVATE", 422);
         }
-      } else {
-        const errorBody = await runRes.text();
-        console.warn(`[Apify Scraper] Live actor run HTTP ${runRes.status}:`, errorBody);
+        const now = new Date().toISOString();
+        const exps = (L.experience || []).slice(0, 5).map((e: any) => ({
+          title: e.position || "", company: e.companyName || "", description: e.description || undefined,
+          startDate: e.startDate?.text, endDate: e.endDate?.text,
+        }));
+        const parsedLi: RawLinkedInProfile = {
+          url: linkedInUrl,
+          fullName: `${L.firstName} ${L.lastName || ""}`.trim(),
+          headline: L.headline || "",
+          location: L.location?.linkedinText || "",
+          about: L.about || "",
+          avatarUrl: L.profilePicture?.url,
+          company: exps[0]?.company, role: exps[0]?.title, experiences: exps,
+          skills: (L.skills || []).map((s: any) => s.name).slice(0, 15),
+          scrapedAt: now,
+        };
+        const parsedIg: RawInstagramProfile = {
+          url: instagramUrl, username: I.username, fullName: I.fullName || parsedLi.fullName,
+          biography: I.biography || "", externalUrl: I.externalUrl,
+          profilePicUrl: I.profilePicUrlHD || I.profilePicUrl, postsCount: I.postsCount, followersCount: I.followersCount,
+          recentPosts: (I.latestPosts || []).slice(0, 5).map((p: any, k: number) => ({
+            id: `ig:post:${k + 1}`, caption: p.caption || "", hashtags: p.hashtags, timestamp: p.timestamp, likesCount: p.likesCount,
+          })),
+          scrapedAt: now,
+        };
+        const snapshotPath = saveSnapshotToDisk(urlHash, {
+          urlHash, scrapedAt: now, source: "apify_live", linkedIn: parsedLi, instagram: parsedIg,
+        });
+        return { linkedIn: parsedLi, instagram: parsedIg, source: "apify_live", urlHash, isCachedSnapshot: false, snapshotPath };
       }
     } catch (err) {
+      if (err instanceof ProfileScrapeError) throw err;
       console.warn("[Apify Scraper] Live actor execution error:", err);
     }
   }
@@ -170,31 +166,3 @@ export async function scrapeProfilesWithApify(
   );
 }
 
-function parseRawLinkedIn(url: string, raw: any): RawLinkedInProfile {
-  return {
-    url,
-    fullName: raw.name || raw.fullName || "Verified User",
-    headline: raw.headline || raw.title || "Innovator & Builder",
-    location: raw.location || "Global Tech Hub",
-    company: raw.company || "Technology Co.",
-    role: raw.role || raw.position || "Engineer",
-    about: raw.summary || raw.about || "",
-    avatarUrl: raw.profilePicture || raw.avatarUrl,
-    experiences: Array.isArray(raw.positions) ? raw.positions : [],
-    skills: Array.isArray(raw.skills) ? raw.skills : [],
-    scrapedAt: new Date().toISOString(),
-  };
-}
-
-function parseRawInstagram(url: string, raw: any): RawInstagramProfile {
-  return {
-    url,
-    username: raw.username || url.split("instagram.com/")[1]?.replace(/\/$/, "") || "user",
-    fullName: raw.fullName || "Verified Creator",
-    biography: raw.biography || raw.bio || "",
-    profilePicUrl: raw.profilePicUrl || raw.profilePicUrlHD,
-    followersCount: raw.followersCount || 10000,
-    recentPosts: Array.isArray(raw.latestPosts) ? raw.latestPosts : [],
-    scrapedAt: new Date().toISOString(),
-  };
-}

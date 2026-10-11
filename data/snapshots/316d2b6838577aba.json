@@ -1,0 +1,85 @@
+{
+ "urlHash": "316d2b6838577aba",
+ "scrapedAt": "2026-10-11T07:41:28.684Z",
+ "source": "apify_live",
+ "linkedIn": {
+  "url": "https://www.linkedin.com/in/justineezarik",
+  "fullName": "Justine Ezarik",
+  "headline": "YouTube Content Creator Since 2006 | Board Member at Creators Guild of America",
+  "location": "Los Angeles Metropolitan Area",
+  "about": "With over 1.5 billion views on YouTube alone, iJustine has been creating content since 2006. You can find her on pretty much every other social networking site sharing her passion for tech, jiu jitsu, scuba diving and whatever new hobby she is into that week 🙏🏻🙂",
+  "avatarUrl": "https://media.licdn.com/dms/image/v2/D5603AQEs69qZ_lJL1A/profile-displayphoto-crop_800_800/B56Zu_fz3wI0AI-/0/1768444349359?e=1793232000&v=beta&t=RS7HgQ-Ynw3_9j2jpP3mOcvMS0WIGa3vQb4-Gsa0LdE",
+  "company": "Creators Guild of America",
+  "role": "Board Member",
+  "experiences": [
+   {
+    "title": "Board Member",
+    "company": "Creators Guild of America",
+    "startDate": "Jan 2023",
+    "endDate": "Present"
+   },
+   {
+    "title": "Creator",
+    "company": "YouTube",
+    "startDate": "May 2006",
+    "endDate": "Present"
+   }
+  ],
+  "skills": [
+   "YouTube Video Creation",
+   "On-camera Hosting",
+   "Graphic Design",
+   "Video Editing",
+   "Final Cut Pro"
+  ],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ },
+ "instagram": {
+  "url": "https://www.instagram.com/ijustine",
+  "username": "ijustine",
+  "fullName": "iJustine",
+  "biography": "📱 tech reviewer / content creator\n✈️ travel 🤿 diving 💜 jiu jitsu\n🐶 dog: @djminimatt \n🎙 podcast: @samebrain",
+  "externalUrl": "https://beacons.ai/ijustine",
+  "profilePicUrl": "https://instagram.fqro5-1.fna.fbcdn.net/v/t51.2885-19/471795416_1063154922281578_2961322355593200202_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fqro5-1.fna.fbcdn.net&_nc_cat=110&_nc_oc=Q6cZ2gE6O_j3FxVCeo0k-sTx_Cag5t4BAhGgR7xblEsClaoMezmeA8NnQHmkYS6W-qM7IQw&_nc_ohc=FP-Pm8jA0osQ7kNvwETx2J9&_nc_gid=7NlqKzDFzwn62pEL48_WUg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AQMYmXdCuMU18im_5lJNPlAGyge6jUFWPJPenKpC5r7Kfw&oe=6AD12112&_nc_sid=8b3546",
+  "postsCount": 7875,
+  "followersCount": 1648281,
+  "recentPosts": [
+   {
+    "id": "ig:post:1",
+    "caption": "24 hours in Japan!! 🇯🇵 Matcha, Pokemon, Punch, jiu jitsu, wagyu, Apple Store, Don Quijote ✅ — I mean has anyone actually ever watched a 3 minute video on IG? 🤣🤣",
+    "hashtags": [],
+    "timestamp": "2026-10-04T22:16:00.000Z",
+    "likesCount": 2085
+   },
+   {
+    "id": "ig:post:2",
+    "caption": "A @linkinpark x Jiu Jitsu collab??!! SO COOL! Went to the opening of their pop-up in LA @complexshop with a ton of exclusive merch including this amazing gi that @pontis.co and @mrjasperwong collabed on! The pop-up is open until Oct 4 and you can get pre-orders in online for the gi after that! It’s 🔥🔥🔥\n\nThey also have all their tour posters displayed and some for purchase (I bought the Pittsburgh one, home town represent!) and I’ve got my eyes on this holographic one at the end to add to my holo poster collection. \n\nThe night before we went and trained @ludus and got to see @jeff.pontis with the gi in action. You’ll see me with mine on the mats soon 😜 just got it!\n\nCongrats @m_shinoda and the rest of LP on such an awesome tour, can’t wait to see the film and catch another show on the next one! 🙏🏻",
+    "hashtags": [],
+    "timestamp": "2026-10-02T02:31:48.000Z",
+    "likesCount": 7258
+   },
+   {
+    "id": "ig:post:3",
+    "caption": "And then I googled “existential crisis” to see if I was having one and Gemini answered and asked me if I was okay and needed to seek help and I think I’m just gonna carry on and enjoy my new flash and catch Pokemon until I get to my destination… @googlegemini @muse @waymo @spotify @pokemongoapp",
+    "hashtags": [],
+    "timestamp": "2026-09-30T01:34:17.000Z",
+    "likesCount": 3098
+   },
+   {
+    "id": "ig:post:4",
+    "caption": "✨ViBeS✨",
+    "hashtags": [],
+    "timestamp": "2026-09-29T15:30:58.000Z",
+    "likesCount": 3171
+   },
+   {
+    "id": "ig:post:5",
+    "caption": "Week 1 w iPhone 18 Pro Maximus 😃",
+    "hashtags": [],
+    "timestamp": "2026-09-28T19:11:10.000Z",
+    "likesCount": 5923
+   }
+  ],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ }
+}

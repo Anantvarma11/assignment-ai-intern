@@ -1,0 +1,96 @@
+{
+ "urlHash": "164c790924c38352",
+ "scrapedAt": "2026-10-11T07:41:28.684Z",
+ "source": "apify_live",
+ "linkedIn": {
+  "url": "https://www.linkedin.com/in/melanieperkins",
+  "fullName": "Melanie Perkins",
+  "headline": "Co-founder & CEO at Canva",
+  "location": "Greater Sydney Area",
+  "about": "Working with an incredible team to empower the world to design with Canva.",
+  "avatarUrl": "https://media.licdn.com/dms/image/v2/C4E03AQFKMlvwPhqm5Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1516350216140?e=1793232000&v=beta&t=Cx6DP62HCkFThXHnADdMfFXl-JKo5xHKk96FSiflX_w",
+  "company": "Canva",
+  "role": "CEO & Co-founder",
+  "experiences": [
+   {
+    "title": "CEO & Co-founder",
+    "company": "Canva",
+    "description": "Canva is a simple-to-use online design and publishing platform that allows everyone to create professional quality designs. With over 15 million users from 190 countries Canva has been growing rapidly since its launch in August 2012, however we're just getting started!\n\nFor more info see: www.canva.com",
+    "startDate": "May 2012",
+    "endDate": "Present"
+   },
+   {
+    "title": "Founder and Director",
+    "company": "Fusion Books",
+    "description": "Fusion Books is an innovative online publishing system which enables people to create stylish and professional yearbooks quickly and easily even if they have had no publishing experience. \n\nThe entire school, club or business can jump online and design photo pages, article pages and add their own profile. The yearbooks are then printed into a high-quality production which can be kept for generations as a special memento.",
+    "startDate": "Jan 2007",
+    "endDate": "Present"
+   },
+   {
+    "title": "Multimedia Centre Technical Assistant and Tutor",
+    "company": "The University of Western Australia",
+    "description": "Providing technical support and tuition to students, using software such as Adobe Photoshop, Adobe Flash and iMovie.",
+    "startDate": "Feb 2006",
+    "endDate": "Oct 2007"
+   },
+   {
+    "title": "Public Relations Internship",
+    "company": "Weber Shandwick",
+    "startDate": "Jun 2007",
+    "endDate": "Jul 2007"
+   }
+  ],
+  "skills": [
+   "Project Management",
+   "Product Development",
+   "Marketing",
+   "Entrepreneurship",
+   "User Experience",
+   "Start-ups",
+   "Mobile Applications",
+   "Web Development",
+   "User Interface Design",
+   "Online Advertising",
+   "Social Media",
+   "Web 2.0",
+   "Social Networking",
+   "Mobile Devices",
+   "Information Architecture"
+  ],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ },
+ "instagram": {
+  "url": "https://www.instagram.com/melaniecanva",
+  "username": "melaniecanva",
+  "fullName": "Melanie Perkins",
+  "biography": "Co-founder and CEO of @Canva. Working with an incredible team to empower the world to design.",
+  "externalUrl": "http://canva.com/",
+  "profilePicUrl": "https://scontent-bos5-1.cdninstagram.com/v/t51.2885-19/176299597_267126058251790_6774513127479172993_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby41NDAuYzIifQ&_nc_ht=scontent-bos5-1.cdninstagram.com&_nc_cat=110&_nc_oc=Q6cZ2gF48Wo0ynW_wq1zVXIHyKIe9M0SNCUJklsxbPP7SLamAC15zrL_HkBFPAT_rWvWP-4JKcAXPQkSDufZgClLjYSj&_nc_ohc=FLfQS-39rmMQ7kNvwGPuZCe&_nc_gid=bh4H06TevESWuHycOnpHZg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AQOn_VMT9SAFvaZayVvr_DsD0M4k1tj1kVO1-U1IEcLG_w&oe=6AD11911&_nc_sid=8b3546",
+  "postsCount": 3,
+  "followersCount": 53193,
+  "recentPosts": [
+   {
+    "id": "ig:post:1",
+    "caption": "Meet Pumba - he is my little bros incredibly adorable rescue pup who was a little too scared to cross the road this morning.",
+    "hashtags": [],
+    "timestamp": "2019-01-26T07:09:59.000Z",
+    "likesCount": 9932
+   },
+   {
+    "id": "ig:post:2",
+    "caption": "As Canva has grown *everything* has had to change and evolve too. On people’s birthday we have always tried to do something a little special, people could choose a birthday meal that our amazing Vibe team would create - we now have more birthdays than work days in the year so had to iterate, here’s their latest creation, The Birthday Wheel. Our team is the best 😂",
+    "hashtags": [],
+    "timestamp": "2019-01-18T08:47:10.000Z",
+    "likesCount": 6091
+   },
+   {
+    "id": "ig:post:3",
+    "caption": "First of Jan in Rio and my first insta post ☺️ Love getting away each year and getting to know a little more of this big, beautiful, chaotic, crazy world we live in. Always leave with a few life lessons and Brazil has certainly not disappointed.",
+    "hashtags": [],
+    "timestamp": "2019-01-01T21:56:24.000Z",
+    "likesCount": 8015
+   }
+  ],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ }
+}

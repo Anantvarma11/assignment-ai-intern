@@ -176,7 +176,7 @@ export function runCriticPass(rawData: IngestedRawData): CriticPassResult {
     name: linkedIn.fullName || instagram.fullName,
     handle: cleanHandle,
     role: linkedIn.role || "Creator & Technologist",
-    headline: linkedIn.headline || `${linkedIn.fullName} on LinkedIn & Instagram`,
+    headline: (linkedIn.headline && linkedIn.headline.trim().length >= 5) ? linkedIn.headline : `${linkedIn.fullName} on LinkedIn & Instagram`,
     company: linkedIn.company || "Independent Studio",
     location: linkedIn.location || "United States",
     avatarUrl: instagram.profilePicUrl || linkedIn.avatarUrl || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",

@@ -1,0 +1,87 @@
+{
+ "urlHash": "c478e258b1000a97",
+ "scrapedAt": "2026-10-11T07:41:28.684Z",
+ "source": "apify_live",
+ "linkedIn": {
+  "url": "https://www.linkedin.com/in/lexfridman",
+  "fullName": "Lex Fridman",
+  "headline": "Interested in humans and robots.",
+  "location": "United States",
+  "about": "Host of Lex Fridman Podcast. Interested in humans and robots.",
+  "avatarUrl": "https://media.licdn.com/dms/image/v2/C4E03AQHLCrHhGZ0xMg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1519486751887?e=1793232000&v=beta&t=44Gu_xfVom_hPOhO2dFNbwk7_kVP52_97mMxoDCJz1o",
+  "company": "Massachusetts Institute of Technology (MIT)",
+  "role": "Research Scientist",
+  "experiences": [
+   {
+    "title": "Research Scientist",
+    "company": "Massachusetts Institute of Technology (MIT)",
+    "description": "Research interests: Human-AI interaction.\nFull-time & actively publishing: 2015 - 2019.\nPart-time: 2020 - present (2026)",
+    "startDate": "2015",
+    "endDate": "Present"
+   },
+   {
+    "title": "Researcher",
+    "company": "Google",
+    "description": "Machine learning research with a focus on active authentication.",
+    "startDate": "2014",
+    "endDate": "2015"
+   }
+  ],
+  "skills": [
+   "Artificial Intelligence",
+   "Machine Learning",
+   "Deep Learning",
+   "Computer Vision",
+   "Research"
+  ],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ },
+ "instagram": {
+  "url": "https://www.instagram.com/lexfridman",
+  "username": "lexfridman",
+  "fullName": "Lex Fridman",
+  "biography": "Host of Lex Fridman Podcast.\nInterested in robots and humans.",
+  "externalUrl": "https://lexfridman.com/contact",
+  "profilePicUrl": "https://scontent-man2-1.cdninstagram.com/v/t51.2885-19/26158334_1596686793745990_5708096284678684672_n.jpg?_nc_cat=104&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4zMTIuQzMifQ%3D%3D&_nc_ohc=Hf-To5hUyB0Q7kNvwFAVEDL&_nc_oc=AdrsTe4bgQQhkPDSRRx9uN-4aGaCnGW8apDKlLAz4w7cnGhSP-lsmA000kQVR2Z-wwk&_nc_zt=24&_nc_ht=scontent-man2-1.cdninstagram.com&_nc_ss=70a8c&oh=00_AQO2YReytMsdO4qeQZuWeMja0DyiZ6SiG7HzcFAcxlEXgg&oe=6AD11BE3",
+  "postsCount": 826,
+  "followersCount": 1258425,
+  "recentPosts": [
+   {
+    "id": "ig:post:1",
+    "caption": "I got to spend all day today with Jensen in Taiwan: talking with thousands of engineers and eating street food at a night market. Jensen is received as a rockstar in Taiwan, like it's Beatles in the 60's. It's mind-blowing and fun to watch. But most importantly, through all the interactions and all my conversations with him, he remained the same humble, kind, thoughtful, funny guy he always was, even as a kid who went to these same night markets many years ago.\n\nBtw, we tried a crazy amount of different street food. It's legit some of the most delicious food I've ever had. I can't wait to share video of it, including a ton of our conversations and hangout. When I can pause for a moment from all the travel to edit the video, I'll post it.\n\nCan't wait to continue talking to Jensen and engineers at Computex this week, and exploring more of Taiwan, and of course roaming the night markets for some more delicious street food.\n\nDays like these, even more than usual, I feel like the luckiest kid in the world.\n\nLove you all! ❤️",
+    "hashtags": [],
+    "timestamp": "2026-06-02T16:31:23.000Z",
+    "likesCount": 73496
+   },
+   {
+    "id": "ig:post:2",
+    "caption": "I'm traveling the world for a bit, starting with China but then hopping around the globe, anywhere. Open to any adventure. No plans, only a backpack. Hoping to meet & get to know humans from all walks of life. The pic is from a long hike on the Great Wall. For me, as a fan of history, this was an epic experience.\n\nIn China, first I'm visiting a few big cities & talking to engineers at the heart of China's AI revolution. After that, if feeling crazy enough, I'm hitchhiking (first time) across rural China for a few weeks. Hitchhiking because I think it's the best way to meet rural folks who I would otherwise never get the chance to meet. I hope to do the same in US and other places.\n\nI have a request, if you have a travel recommendation, fill out the form(s) below if you feel like it. The forms are linked on my Contact page in my profile. Or share with folks who might have advice about such travel.\n\nForm 1 - travel recommendation:\nIf you can, recommend to me an interesting place I should visit anywhere in the world. For this, fill out form 1. Not touristy stuff, but something off the beaten path, that tourists may not know about, but is legendary. It could be as remote as meeting a herder in the mountains who is a local legend. Asia, Middle East, Europe, India, South/North America, Africa, Australia, anywhere. In China, I'm hoping to visit maybe Heibei, Shanxi, Shaanxi, Gansu, Sichuan, Yunnan, etc, so recommendations for spots to visit are helpful.\n\nForm 2 - coffee:\nIf you want to grab a coffee with me anywhere in the world, fill out form 2 (please don't use form 1 for that). \n\nAnyway, I hectically tossed stuff in backpack. Realizing I don't have a clear plan of any kind, which is probably the only way to do it. LFG.\n\nLove you all ❤️",
+    "hashtags": [],
+    "timestamp": "2026-05-14T18:37:21.000Z",
+    "likesCount": 47346
+   },
+   {
+    "id": "ig:post:3",
+    "caption": "Love you all ❤️",
+    "hashtags": [],
+    "timestamp": "2026-04-08T04:50:42.000Z",
+    "likesCount": 24316
+   },
+   {
+    "id": "ig:post:4",
+    "caption": "It was an honor to hang out with Jensen Huang, CEO of NVIDIA, and do a long-form podcast with him. Really fun & fascinating technical deep-dive conversation on & off the mic. One of the most brilliant & thoughtful human beings I've ever met. NVIDIA is the most valuable company in the world by market cap and is the engine powering the AI revolution.\n\nPodcast probably out tomorrow (Monday), unless I get stuck in too many interesting conversations while running around in SF ;-)\n\nPS: I haven't checked my messages in days. Sorry for slow replies 🙏 Trying to stay deeply focused in an overwhelmingly intense time & barely hanging on. Love you all! ❤️",
+    "hashtags": [],
+    "timestamp": "2026-03-22T21:48:59.000Z",
+    "likesCount": 35938
+   },
+   {
+    "id": "ig:post:5",
+    "caption": "Here's a video of me training with @khabib_nurmagomedov, one of the greatest fighters of all time and a great human being. This was truly an honor for me 🙏 Full video is on YouTube.",
+    "hashtags": [],
+    "timestamp": "2026-03-02T06:01:30.000Z",
+    "likesCount": 33299
+   }
+  ],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ }
+}

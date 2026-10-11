@@ -1,0 +1,117 @@
+{
+ "urlHash": "ea0029d4ae200f0e",
+ "scrapedAt": "2026-10-11T07:41:28.684Z",
+ "source": "apify_live",
+ "linkedIn": {
+  "url": "https://www.linkedin.com/in/richardbranson",
+  "fullName": "Richard Branson",
+  "headline": "Technical Director / CTO | IoT & AI Innovator | Building Connected Systems for Sport, Fitness & Experiential Technology",
+  "location": "Royal Tunbridge Wells, England, United Kingdom",
+  "about": "I’m a technology leader and builder with a passion for creating connected systems that transform how people interact with sport, fitness, and entertainment. Over the past decade, I’ve combined hands-on engineering with strategic direction to design and deliver IoT platforms, real-time data pipelines, and engaging digital experiences.\n\nAt ActionCam.Video, I’ve led the full technology journey—from establishing secure cloud infrastructure and IT operations, to architecting next-generation IoT ecosystems and customer-facing applications used in gyms, sports venues, and experiential spaces across the UK and US.\n\n🔹 Tech Vision & Delivery (2023–Present): Now as Technical Director / CTO, I drive the technology roadmap, architecting IoT ecosystems that connect hardware (Raspberry Pi, Arduino, sensors, cameras) with real-time cloud data pipelines, analytics, and interactive user experiences. My work spans firmware, Python/C++ development, edge computing, and AI/ML, through to QR-driven scoreboards and predictive performance platforms.\n\n🔹 Ops & Infrastructure (2020–2023): As Operations Director, I built the backbone of ActionCam’s systems—designing IT networks, deploying secure cloud environments (AWS & Azure), managing multi-domain web platforms, and delivering on-site installations.\n\nWhat excites me most is connecting the dots:\n\t•\tTurning sensor data into actionable insights with real-time analytics and AI\n\t•\tDesigning scalable, secure IoT ecosystems blending edge and cloud computing\n\t•\tCreating automation tools, and interactive dashboards that reimagine engagement\n\t•\tLeading multidisciplinary teams to turn complex ideas into reliable, commercial-ready products\n\nBefore ActionCam, I built a strong foundation in digital and experiential marketing. As Head of Digital at Wasserman X, I led all digital output for global clients including NBA, Sky, HP, and Taylors of Harrogate. Earlier agency roles at SPPLUS, Sense, and Candour gave me deep experience in operations, production, and events management, delivering campaigns for brands such as Cadbury, Canon, Sky, and Timberland.\n\nI also hold a BSc in Sports Science from UCLan and continue to expand my knowledge through courses in computer programming, design, and emerging tech.\n\n💡 I thrive at the intersection of innovation and delivery—bridging strategy with hands-on engineering, and bringing emerging technologies like AI, and edge computing into practical, real-world solutions.\n\nAlways open to connecting with fellow innovators, technologists, and creatives.",
+  "avatarUrl": "https://media.licdn.com/dms/image/v2/D4E03AQGPhk5-kyzcBQ/profile-displayphoto-crop_800_800/B4EZrT.W.2GYAI-/0/1764492931636?e=1793232000&v=beta&t=v4YGpgpFiZza2Sx4-c9c1vk6A2XoK9MOuWA0ukrbsxU",
+  "company": "Action Cam Limited",
+  "role": "Technical Director / CTO",
+  "experiences": [
+   {
+    "title": "Technical Director / CTO",
+    "company": "Action Cam Limited",
+    "description": "As Technical Director / CTO, I lead the vision, architecture, and delivery of ActionCam.Video’s next-generation sports and fitness technology. My role combines hands-on engineering with strategic leadership, architecting IoT ecosystems that connect hardware, cloud, and digital experiences at scale.\n\nKey Responsibilities & Achievements\n\t•\tTechnology Strategy: Defined and executed the company’s technology roadmap, driving innovation in FEC Gamification, automated sports scoring, rep counting, and real-time video highlight platforms.\n\t•\tIoT & Systems Architecture: Built multi-device ecosystems integrating Raspberry Pi, Arduino, and advanced sensors (TOF, accelerometers, FSR) with Azure cloud pipelines and WebSocket-enabled dashboards.\n\t•\tSoftware & Data: Developed software from firmware to full-stack platforms, implementing real-time data ingestion, analytics, and leaderboards; exploring AI & Object detection for in camera triggering systems.\n\t•\tLive Digital Models: Created real-time digital representations of athlete performance and in-venue activity, enabling coaches, athletes, and operators to monitor progress, analyse performance, and enhance engagement.\n\t•\tUser Experience: Delivered interactive customer-facing systems such as QR-driven live scoreboards, mobile-accessible counters, and gamified training tools.\n\t•\tLeadership & Delivery: Built and coordinated a cross-disciplinary team, translating customer needs into scalable, commercial-ready solutions.\n\nCore Skills & Tools: Python, JavaScript/Node.js, C++, OpenCV, GStreamer, FFmpeg, WebSockets, Azure (Blob, Functions, IoT Hub), MQTT, REST APIs, SQL/NoSQL databases, IoT hardware (Raspberry Pi, Arduino, camera pipelines, sensors).",
+    "startDate": "Mar 2023",
+    "endDate": "Present"
+   },
+   {
+    "title": "Operations Director",
+    "company": "Action Cam Limited",
+    "description": "As Operations Director, I established the foundations of ActionCam.Video’s technology and infrastructure, ensuring the company was built on secure, scalable, and reliable systems. I was responsible for the full lifecycle of IT operations, from planning and design through to deployment and long-term management.\n\nKey Responsibilities & Achievements\n\t•\tInfrastructure & Networking: Designed and deployed IT networks and server infrastructure to support real-time video processing, IoT devices, and cloud-based services.\n\t•\tCloud & Web Systems: Built and managed the company’s full web presence, overseeing multiple domains and websites hosted across AWS and Azure, ensuring high availability, performance, and security.\n\t•\tSystems Integration: Standardised deployment processes, introduced monitoring and automation, and created secure environments to connect hardware, software, and cloud services seamlessly.\n\t•\tOperations Leadership: Coordinated logistics for installation and support across client venues in the UK and US, managing projects from concept to on-site delivery.\n\t•\tCybersecurity & Compliance: Implemented secure networking, data protection measures, and best practices for GDPR compliance.\n\t•\tVendor & Partner Management: Negotiated with suppliers and partners for hardware, hosting, and connectivity services to optimise cost and performance.\n\nCore Skills & Tools: AWS, Azure, Linux server administration, DNS/domain management, web hosting, networking protocols (TCP/IP, HTTP, MQTT), VPNs, firewall management, IT security, project management.",
+    "startDate": "Jan 2020",
+    "endDate": "Mar 2023"
+   },
+   {
+    "title": "Co-Founder & Head of Digital",
+    "company": "Wellbeing Magazine",
+    "startDate": "Sep 2006",
+    "endDate": "Present"
+   },
+   {
+    "title": "Digital Marketing Consultant",
+    "company": "diabolo.digital",
+    "description": "Web design / development / management / hosting / marketing and more... We offer a full digital agency service at freelance rates.",
+    "startDate": "Oct 2018",
+    "endDate": "Jan 2020"
+   },
+   {
+    "title": "Head Of Digital",
+    "company": "Wasserman X",
+    "description": "==== Brand Experience ==== \nIncludes: Sky, HP, Bacardi Group (Martini, Grey Goose, St Germain, William Lawsons, Bombay Sapphire), Nespresso, NFL, NBA, Vodafone, Taylors of Harrogate.",
+    "startDate": "Nov 2016",
+    "endDate": "Oct 2018"
+   }
+  ],
+  "skills": [
+   "IT Infrastructure & Networking",
+   "Cloud Platforms (AWS & Azure)",
+   "Website & Domain Management",
+   "Security & Compliance",
+   "IoT & Edge Computing",
+   "Software Development (Python)",
+   "Real-Time Data Pipelines & Analytics",
+   "Product Innovation & Technical Leadership",
+   "IoT Systems Architecture",
+   "Cloud Infrastructure (AWS & Azure)",
+   "AI / Machine Learning Integration",
+   "Data Analytics & Power BI",
+   "Leadership & Technology Strategy",
+   "User Experience",
+   "SEO"
+  ],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ },
+ "instagram": {
+  "url": "https://www.instagram.com/richardbranson",
+  "username": "richardbranson",
+  "fullName": "Richard Branson",
+  "biography": "Screw it, let’s do it.",
+  "externalUrl": "https://virg.in/U3Xj",
+  "profilePicUrl": "https://scontent.cdninstagram.com/v/t51.75761-19/503469413_18508843858032318_3818904278229082005_n.jpg?_nc_cat=105&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy45MDIuQzMifQ%3D%3D&_nc_ohc=3nI-scfLHi4Q7kNvwF7qT9l&_nc_oc=Adrh8BuFZxFIdNZ-xuFc6VcFB7Pibe8nRobyynzJ_bXjsbgyrQlxa0pBaJ3FsyloCBo&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=r22SsC14Xjk6iKfCGzN5_Q&_nc_ss=70a8c&oh=00_AQOeDH1aOBRb6SQxp4bPyZv5npkiwM--pm5ARGldIcioyg&oe=6AD1087F",
+  "postsCount": 4643,
+  "followersCount": 4986640,
+  "recentPosts": [
+   {
+    "id": "ig:post:1",
+    "caption": "In my experience, the best businesses start by looking at an industry and asking: how could this be done better? \n \nThis is our exact ambition with cross-Channel rail. Today, we shared a first glimpse of the bold black and red livery planned for our fleet of 12 @Alstom Avelia Stream trains. \n \n@Virgin's ambition is to run 20 daily return services between London and continental Europe from 2030. We want to bring more choice, some healthy competition, and more capacity to one of Europe’s most important travel routes. \n \nThere is a huge opportunity here. More people are choosing rail for shorter journeys across Europe, and we believe Virgin can help grow that market by creating an experience people genuinely look forward to. After all, this is what we do best. \n \nWe’ll bring together the best ideas from all across the Virgin family: from @VirginAtlantic’s distinct hospitality, and @VirginVoyages’ award-winning dining experiences, to @VirginHotels’ design approach, and everything we learned from 20 years of Virgin Trains. \n \nExciting times ahead!",
+    "hashtags": [],
+    "timestamp": "2026-10-09T08:34:45.000Z",
+    "likesCount": 15506
+   },
+   {
+    "id": "ig:post:2",
+    "caption": "Our Mile High Tea has fans in high places ✈️",
+    "hashtags": [],
+    "timestamp": "2026-10-06T16:30:35.000Z",
+    "likesCount": 25502
+   },
+   {
+    "id": "ig:post:3",
+    "caption": "New York is always buzzing during Climate Week and the United Nations General Assembly. I come each year for the same reason: to have serious conversations that lead to meaningful change. \n\nWeeks like this aren’t about one person, one organisation or one big speech. They’re about showing up, listening, sharing knowledge and working together to turn ideas into action.\n\nThere are no easy answers to the challenges our world faces but spending time with so many brilliant, determined and hopeful people reminds me that progress is possible.\n\nWe all want to leave the world in a better place for our children and grandchildren, and the best way to do that is together.",
+    "hashtags": [],
+    "timestamp": "2026-10-05T15:33:11.000Z",
+    "likesCount": 3904
+   },
+   {
+    "id": "ig:post:4",
+    "caption": "Hanging out with @CorneelKoster and some of the @VirginAtlantic team at HQ. Meeting our teams is one of my favourite things to do.",
+    "hashtags": [],
+    "timestamp": "2026-10-04T21:35:26.000Z",
+    "likesCount": 4011
+   },
+   {
+    "id": "ig:post:5",
+    "caption": "So touching to see @VirginAtlantic’s new plane paying tribute to my wonderful wife, Joan. \n \nJoan was part of the Virgin Atlantic story from the very beginning. From joining the inaugural flight in 1984, to coming up with the idea of donating loose change on-board for charity (which resulted in almost every airline in the world following suit and raising billions over the years). She was always there. \n \nSeeing the details of our family tartan, the heart-shaped necklace, and the rings she wore every day, brought back so many happy memories.",
+    "hashtags": [],
+    "timestamp": "2026-09-30T10:00:02.000Z",
+    "likesCount": 22686
+   }
+  ],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ }
+}

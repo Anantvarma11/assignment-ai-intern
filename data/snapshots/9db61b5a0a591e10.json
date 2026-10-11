@@ -1,0 +1,115 @@
+{
+ "urlHash": "9db61b5a0a591e10",
+ "scrapedAt": "2026-10-11T07:41:28.684Z",
+ "source": "apify_live",
+ "linkedIn": {
+  "url": "https://www.linkedin.com/in/hank-green",
+  "fullName": "Hank Green",
+  "headline": "Creative Director, Writer, and Human",
+  "location": "Brooklyn, New York, United States",
+  "about": "I'm a creative leader with extensive experience building brands and managing creative teams. Each brand has a unique story, and it’s my job to bring it to life with emotional, thought-provoking creative that delivers results.",
+  "avatarUrl": "https://media.licdn.com/dms/image/v2/D4E03AQFdNF8AaZfqiw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1691705884368?e=1793232000&v=beta&t=dQAmMOqDQ-nmmnhbQvAFGHpiKKMrDbyVzxofV4uSLA0",
+  "company": "Freelance",
+  "role": "Creative Director/Writer",
+  "experiences": [
+   {
+    "title": "Creative Director/Writer",
+    "company": "Freelance",
+    "startDate": "Nov 2022",
+    "endDate": "Present"
+   },
+   {
+    "title": "Creative Director/Writer",
+    "company": "",
+    "startDate": "Nov 2022",
+    "endDate": "Present"
+   },
+   {
+    "title": "Creative Director",
+    "company": "Mobile Premier League (MPL)",
+    "description": "• Led the US Creative team full of designers and writers.\n• Introduced the MPL brand to the US market with a fresh look and tone of voice.\n• Provided feedback, managed delivery timelines and drove new initiatives for the creative team.\n• Partnered with external agencies on new video campaigns and projects.\n• Concepted, scripted and directed in-person photo and video shoots.\n• Connected with upper management from multiple teams to align on business goals and timelines.",
+    "startDate": "Nov 2021",
+    "endDate": "Nov 2022"
+   },
+   {
+    "title": "Copywriter/Screenwriter",
+    "company": "Freelance",
+    "description": "• Work with a variety of brands including health and wellness, fintech and\nindustrial technology.\n• Write scripts for campaign launch videos showcasing new products.\n• Establish a new brand voice for product and website launches.",
+    "startDate": "May 2013",
+    "endDate": "Nov 2022"
+   },
+   {
+    "title": "Associate Creative Director",
+    "company": "CommonBond.co",
+    "startDate": "May 2021",
+    "endDate": "Nov 2021"
+   }
+  ],
+  "skills": [
+   "Social Media Communications",
+   "Creative Strategy",
+   "Copywriting",
+   "Digital Copywriting",
+   "Advertising",
+   "SEO Copywriting",
+   "Content Management Systems (CMS)",
+   "Concept Development",
+   "Creative Direction",
+   "Scriptwriting",
+   "Sports",
+   "Broadcast",
+   "Radio",
+   "Radio Broadcasting",
+   "Campaign Concepting"
+  ],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ },
+ "instagram": {
+  "url": "https://www.instagram.com/hankgreen",
+  "username": "hankgreen",
+  "fullName": "Hank Green",
+  "biography": "I may have taught you biology.\nSubscribe to my newsletter We’re Here!",
+  "externalUrl": "https://hankgreen.com/fourbythree",
+  "profilePicUrl": "https://scontent-gru3-1.cdninstagram.com/v/t51.2885-19/95479959_657001021543712_4101917831828865024_n.jpg?_nc_cat=1&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy40MDAuQzMifQ%3D%3D&_nc_ohc=IvizXCLF6cwQ7kNvwHxzN_k&_nc_oc=Adq5bIXDa3KwQV7ET7o2inMmLtoTyiC7ZY1HC--dYDJ_l-bmcaon2tXVCH1-p3Lvikg&_nc_zt=24&_nc_ht=scontent-gru3-1.cdninstagram.com&_nc_ss=70a8c&oh=00_AQMZyVU7589ZfRUA74Z_vYqb1dr15778qKpntCWgG23eVQ&oe=6AD1277B",
+  "postsCount": 2930,
+  "followersCount": 2227841,
+  "recentPosts": [
+   {
+    "id": "ig:post:1",
+    "caption": "We shouldn’t call cancer a disease.",
+    "hashtags": [],
+    "timestamp": "2026-10-09T20:48:07.000Z",
+    "likesCount": 14100
+   },
+   {
+    "id": "ig:post:2",
+    "caption": "Whether it's a choice slice of pizza or a niche event celebrating a man with a mustache, all good things must come to an end. Pizzamas.com will be open through the weekend, and then all of these great items will be gone! Don't forget to grab those things you've had your eye on!",
+    "hashtags": [],
+    "timestamp": "2026-10-09T20:00:37.000Z",
+    "likesCount": 1049
+   },
+   {
+    "id": "ig:post:3",
+    "caption": "Some alcohol may have been consumed during the filming of this episode of Ask Hank Anything. But it was for science! ⁠\n⁠",
+    "hashtags": [],
+    "timestamp": "2026-10-07T21:03:05.000Z",
+    "likesCount": 6337
+   },
+   {
+    "id": "ig:post:4",
+    "caption": "@gianmarcosoresi makes people laugh despite themselves. Listen to the full conversation wherever you get your podcasts! @humanswithhank",
+    "hashtags": [],
+    "timestamp": "2026-10-07T16:57:53.000Z",
+    "likesCount": 5761
+   },
+   {
+    "id": "ig:post:5",
+    "caption": "Yes, indeed, some of us are *checks notes* way on the gear in our Mr. Rogers sweaters.",
+    "hashtags": [],
+    "timestamp": "2026-09-28T20:03:14.000Z",
+    "likesCount": 2305
+   }
+  ],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ }
+}

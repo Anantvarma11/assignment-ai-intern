@@ -1,8 +1,6 @@
 import fs from "fs";
 import path from "path";
 import { Person, AgentAnalysis, DatingSimulation, CompatibilityMatch } from "@/lib/types";
-import { SEED_PEOPLE } from "@/lib/data/seed-people";
-import { PRECOMPUTED_SIMULATIONS } from "@/lib/data/seed-simulations";
 import { loadConsentingVolunteers } from "@/lib/data/volunteers";
 
 export interface DatabaseState {
@@ -53,14 +51,6 @@ class StorageEngine {
     for (const seed of volunteerPeople) {
       if (!this.state.people[seed.id]) {
         this.state.people[seed.id] = seed;
-        needsSave = true;
-      }
-    }
-
-    // Seed precomputed simulations if missing
-    for (const sim of PRECOMPUTED_SIMULATIONS) {
-      if (!this.state.simulations[sim.id]) {
-        this.state.simulations[sim.id] = sim;
         needsSave = true;
       }
     }
@@ -191,7 +181,7 @@ class StorageEngine {
       simulations: {},
       matches: {},
     };
-    for (const seed of SEED_PEOPLE) {
+    for (const seed of loadConsentingVolunteers().people) {
       this.state.people[seed.id] = seed;
     }
     this.persist();

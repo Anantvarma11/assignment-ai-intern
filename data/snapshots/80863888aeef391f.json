@@ -1,0 +1,75 @@
+{
+ "urlHash": "80863888aeef391f",
+ "scrapedAt": "2026-10-11T07:41:28.684Z",
+ "source": "apify_live",
+ "linkedIn": {
+  "url": "https://www.linkedin.com/in/saradietschy",
+  "fullName": "Sara Dietschy",
+  "headline": "YouTuber, Entrepreneur",
+  "location": "New York, New York, United States",
+  "about": "Lol Linkedin amirite?\n\nYouTube.com/SaraDietschy",
+  "avatarUrl": "https://media.licdn.com/dms/image/v2/C4E03AQH_3oIA_Emn-Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1517351234631?e=1793232000&v=beta&t=4zFdK-LiBj20LtTv5h30tBmwdMFsaiD_TCJOeYZ_3sY",
+  "company": "Sara Dietschy",
+  "role": "Me",
+  "experiences": [
+   {
+    "title": "Me",
+    "company": "Sara Dietschy",
+    "startDate": "Aug 1994",
+    "endDate": "Present"
+   }
+  ],
+  "skills": [],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ },
+ "instagram": {
+  "url": "https://www.instagram.com/saradietschy",
+  "username": "saradietschy",
+  "fullName": "Sara Dietschy",
+  "biography": "Rhymes w/ Peachy\nYouTube abt Tech & Creativity\nLook better on camera 👉🏻 StudioSetup.com",
+  "externalUrl": "https://youtu.be/KChOEI1qPD4?is=OHXaM4E-GsjfZXb6",
+  "profilePicUrl": "https://scontent-waw2-2.cdninstagram.com/v/t51.2885-19/29739963_412987009126719_4560417187088564224_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-waw2-2.cdninstagram.com&_nc_cat=103&_nc_oc=Q6cZ2gGPqFChS266jLPQJn_j9mE2jP8NCiYrI8VfKBohK3Pg0VZL2tjYk75V2C8WZ6bH4MOplitzMF6ZiFs1S3m4HQsk&_nc_ohc=pCso3Ikd9MIQ7kNvwFnXdIE&_nc_gid=Bns06xeXwO8-KYhHgGV0og&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AQOTtCX6Jf7pS3MRRJ5xlNzAlKTZxpSFUvaJm6VFCRu4gA&oe=6AD10C1D&_nc_sid=8b3546",
+  "postsCount": 1525,
+  "followersCount": 171047,
+  "recentPosts": [
+   {
+    "id": "ig:post:1",
+    "caption": "I have a love hate relationship with film 🙃 @johnhill",
+    "hashtags": [],
+    "timestamp": "2026-10-07T17:30:49.000Z",
+    "likesCount": 1256
+   },
+   {
+    "id": "ig:post:2",
+    "caption": "I’m so sorry 😣",
+    "hashtags": [],
+    "timestamp": "2026-10-02T21:36:37.000Z",
+    "likesCount": 5842
+   },
+   {
+    "id": "ig:post:3",
+    "caption": "#HyundaiPartner Happy 40th anniversary, @HyundaiUSA! 🎉 After visiting Korea - the home of Hyundai - and seeing Hyundai EVERYWHERE, it is fun coming home and getting to spend time with the all-new IONIQ 9!!\n\nSome of my fave tech specs\n\n ⚡ Charge up to 150 miles in about 15 minutes\n\n 🚗 Up to 335 miles of electric range\n\n 💺 Spacious 3-row interior with relaxation seats (The ventilated seats are AMAZING right now in the heat!)\n\n 📱 Panoramic curved display w/ wireless CarPlay + USB-C charging in all 3 rows\n\n 🔌 Vehicle-to-Load (V2L) lets you power gear from the car",
+    "hashtags": [
+     "HyundaiPartner"
+    ],
+    "timestamp": "2026-08-31T21:38:15.000Z",
+    "likesCount": 1073
+   },
+   {
+    "id": "ig:post:4",
+    "caption": "Kodak shot on Kodak",
+    "hashtags": [],
+    "timestamp": "2026-08-18T15:17:58.000Z",
+    "likesCount": 919
+   },
+   {
+    "id": "ig:post:5",
+    "caption": "Some ramblings about AI & writing",
+    "hashtags": [],
+    "timestamp": "2026-08-07T21:13:01.000Z",
+    "likesCount": 1517
+   }
+  ],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ }
+}

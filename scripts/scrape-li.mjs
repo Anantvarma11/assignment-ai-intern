@@ -1,0 +1,10 @@
+import fs from "fs";
+const T = process.env.APIFY_TOKEN;
+const rows = fs.readFileSync("data/volunteers.csv","utf8").trim().split("\n").slice(1).map(l=>l.split(",")[1]);
+const run = async (input) => (await fetch(`https://api.apify.com/v2/acts/harvestapi~linkedin-profile-scraper/run-sync-get-dataset-items?token=${T}`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(input)})).json();
+const chunks=[rows.slice(0,10),rows.slice(10,20),rows.slice(20)];
+const res=await Promise.all(chunks.map(c=>run({urls:c,profileScraperMode:"Profile details no email ($4 per 1k)"})));
+const all=res.flat();
+fs.writeFileSync("data/raw/li.json",JSON.stringify(all,null,1));
+console.log("total",all.length,"ok",all.filter(x=>x.firstName).length);
+console.log("FAILED:",all.filter(x=>!x.firstName).map(x=>x.originalQuery?.url||JSON.stringify(x).slice(0,100)));

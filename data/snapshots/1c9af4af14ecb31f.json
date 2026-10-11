@@ -1,0 +1,95 @@
+{
+ "urlHash": "1c9af4af14ecb31f",
+ "scrapedAt": "2026-10-11T07:41:28.684Z",
+ "source": "apify_live",
+ "linkedIn": {
+  "url": "https://www.linkedin.com/in/annewojcicki",
+  "fullName": "Anne Wojcicki",
+  "headline": "CEO and Founder, 23andMe Research Institute",
+  "location": "Mountain View, California, United States",
+  "about": "",
+  "company": "23andMe",
+  "role": "Co-Founder and CEO",
+  "experiences": [
+   {
+    "title": "Co-Founder and CEO",
+    "company": "23andMe",
+    "startDate": "2006",
+    "endDate": "Present"
+   },
+   {
+    "title": "Healthcare Analyst",
+    "company": "Passport Capital",
+    "startDate": "2004",
+    "endDate": "2006"
+   },
+   {
+    "title": "Health care analyst",
+    "company": "Andor Capital Management",
+    "startDate": "2001",
+    "endDate": "2002"
+   },
+   {
+    "title": "Health Care Analyst",
+    "company": "Ardsley Partners",
+    "startDate": "1999",
+    "endDate": "2000"
+   },
+   {
+    "title": "Analyst",
+    "company": "Investor AB",
+    "startDate": "1996",
+    "endDate": "1999"
+   }
+  ],
+  "skills": [],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ },
+ "instagram": {
+  "url": "https://www.instagram.com/annewojcicki",
+  "username": "annewojcicki",
+  "fullName": "Anne Wojcicki",
+  "biography": "",
+  "profilePicUrl": "https://scontent-gru1-1.cdninstagram.com/v/t51.2885-19/31023866_680102185714420_3851907983097200640_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4yMDAuYzIifQ&_nc_ht=scontent-gru1-1.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gFwOQYYMOg9_STrWYYVBQ4qdo9GDOkNik4wQ4GJyOyofPAkkYvhNW2lE3_9kgJ0HYw&_nc_ohc=JtFZGHhs-xsQ7kNvwG4mxvB&_nc_gid=XU9oDOFw_TboXTe3WlkkXw&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AQObMHcksdA2lcwm1AY0tAn-GkaxbZ1nw0CFGWeXhb0gTQ&oe=6AD110F8&_nc_sid=8b3546",
+  "postsCount": 15,
+  "followersCount": 67,
+  "recentPosts": [
+   {
+    "id": "ig:post:1",
+    "caption": "",
+    "hashtags": [],
+    "timestamp": "2020-12-30T16:46:05.000Z",
+    "likesCount": 8
+   },
+   {
+    "id": "ig:post:2",
+    "caption": "Et neige à Bavella",
+    "hashtags": [],
+    "timestamp": "2020-12-30T16:45:14.000Z",
+    "likesCount": 8
+   },
+   {
+    "id": "ig:post:3",
+    "caption": "Nuages a l’Ospedale",
+    "hashtags": [],
+    "timestamp": "2020-12-30T16:43:59.000Z",
+    "likesCount": 5
+   },
+   {
+    "id": "ig:post:4",
+    "caption": "",
+    "hashtags": [],
+    "timestamp": "2020-12-25T15:30:10.000Z",
+    "likesCount": 1
+   },
+   {
+    "id": "ig:post:5",
+    "caption": "",
+    "hashtags": [],
+    "timestamp": "2020-12-25T15:29:08.000Z",
+    "likesCount": 4
+   }
+  ],
+  "scrapedAt": "2026-10-11T07:41:28.684Z"
+ }
+}
