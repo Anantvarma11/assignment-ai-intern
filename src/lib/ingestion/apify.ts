@@ -84,7 +84,10 @@ export async function scrapeProfilesWithApify(
         }),
         callActor("apify~instagram-profile-scraper", { usernames: [igUser], resultsLimit: 5 }),
       ]);
-      const L = Array.isArray(liItems) ? liItems.find((x: any) => x.firstName) : null;
+      const liSlug = linkedInUrl.trim().toLowerCase().replace(/\/$/, "").split("/").pop();
+      const L = Array.isArray(liItems)
+        ? liItems.find((x: any) => x.firstName && String(x.publicIdentifier || "").toLowerCase() === liSlug)
+        : null;
       const I = Array.isArray(igItems) ? igItems.find((x: any) => x.username && !x.error) : null;
       if (L && I) {
         if (I.private) {

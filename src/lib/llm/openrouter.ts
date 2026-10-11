@@ -6,7 +6,7 @@ export class OpenRouterProvider implements LLMProvider {
   private defaultModel: string;
   private endpoint: string;
 
-  constructor(apiKey?: string, model: string = "meta-llama/llama-3.3-70b-instruct:free") {
+  constructor(apiKey?: string, model: string = "meta-llama/llama-3.3-70b-instruct") {
     this.apiKey = apiKey || process.env.OPENROUTER_API_KEY || "";
     this.defaultModel = model;
     this.endpoint = "https://openrouter.ai/api/v1/chat/completions";

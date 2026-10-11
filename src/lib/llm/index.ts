@@ -87,7 +87,7 @@ export function getProviderStatus(): ProviderStatusInfo {
     return {
       activeProvider: "openrouter",
       providerName: "OpenRouter LLM Gateway",
-      model: "meta-llama/llama-3.3-70b-instruct:free",
+      model: "meta-llama/llama-3.3-70b-instruct",
       isFallback: false,
       cerebrasAvailable,
       openrouterAvailable,
@@ -114,7 +114,7 @@ export function getProviderStatus(): ProviderStatusInfo {
     return {
       activeProvider: "openrouter",
       providerName: "OpenRouter LLM Gateway",
-      model: "meta-llama/llama-3.3-70b-instruct:free",
+      model: "meta-llama/llama-3.3-70b-instruct",
       isFallback: false,
       cerebrasAvailable,
       openrouterAvailable,
